@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		469D4FBB2FB54468005CA6DB /* TSLAsciiCommands.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E494082FB3EFB50054A2E1 /* TSLAsciiCommands.xcframework */; };
+		469D4FBC2FB54468005CA6DB /* TSLAsciiCommands.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46E494082FB3EFB50054A2E1 /* TSLAsciiCommands.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		469D4FBD2FB54468005CA6DB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				469D4FBC2FB54468005CA6DB /* TSLAsciiCommands.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		465F60362FB3889100D492D1 /* cardex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cardex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		467892AF2FB609B400672B80 /* cardex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cardex.entitlements; sourceTree = "<group>"; };
+		46E494082FB3EFB50054A2E1 /* TSLAsciiCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TSLAsciiCommands.xcframework; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework"; sourceTree = SOURCE_ROOT; };
+		46E4940C2FB3F2270054A2E1 /* TSLAbortCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAbortCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAbortCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4940D2FB3F2270054A2E1 /* TSLAlertCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAlertCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAlertCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4940E2FB3F2270054A2E1 /* TSLAllParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAllParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAllParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E4940F2FB3F2270054A2E1 /* TSLAntennaParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAntennaParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAntennaParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494102FB3F2270054A2E1 /* TSLAsciiCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494112FB3F2270054A2E1 /* TSLAsciiCommandBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandBase.h"; sourceTree = SOURCE_ROOT; };
+		46E494122FB3F2270054A2E1 /* TSLAsciiCommander.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommander.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommander.h"; sourceTree = SOURCE_ROOT; };
+		46E494132FB3F2270054A2E1 /* TSLAsciiCommandExecuting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandExecuting.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandExecuting.h"; sourceTree = SOURCE_ROOT; };
+		46E494142FB3F2270054A2E1 /* TSLAsciiCommandExecutorBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandExecutorBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandExecutorBase.h"; sourceTree = SOURCE_ROOT; };
+		46E494152FB3F2270054A2E1 /* TSLAsciiCommandLibraryResponderBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandLibraryResponderBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandLibraryResponderBase.h"; sourceTree = SOURCE_ROOT; };
+		46E494162FB3F2270054A2E1 /* TSLAsciiCommandResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponder.h"; sourceTree = SOURCE_ROOT; };
+		46E494172FB3F2270054A2E1 /* TSLAsciiCommandResponderBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponderBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponderBase.h"; sourceTree = SOURCE_ROOT; };
+		46E494182FB3F2270054A2E1 /* TSLAsciiCommandResponderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponderDelegate.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponderDelegate.h"; sourceTree = SOURCE_ROOT; };
+		46E494192FB3F2270054A2E1 /* TSLAsciiCommandResponseNotifying.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponseNotifying.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponseNotifying.h"; sourceTree = SOURCE_ROOT; };
+		46E4941A2FB3F2270054A2E1 /* TSLAsciiCommands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommands.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommands.h"; sourceTree = SOURCE_ROOT; };
+		46E4941B2FB3F2270054A2E1 /* TSLAsciiSelfResponderCommandBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiSelfResponderCommandBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiSelfResponderCommandBase.h"; sourceTree = SOURCE_ROOT; };
+		46E4941C2FB3F2270054A2E1 /* TSLAutorunCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAutorunCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAutorunCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4941D2FB3F2270054A2E1 /* TSLAvailabilityMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAvailabilityMacros.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAvailabilityMacros.h"; sourceTree = SOURCE_ROOT; };
+		46E4941E2FB3F2270054A2E1 /* TSLBarcodeCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBarcodeCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBarcodeCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4941F2FB3F2270054A2E1 /* TSLBatteryHealthData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBatteryHealthData.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBatteryHealthData.h"; sourceTree = SOURCE_ROOT; };
+		46E494202FB3F2270054A2E1 /* TSLBatteryServiceData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBatteryServiceData.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBatteryServiceData.h"; sourceTree = SOURCE_ROOT; };
+		46E494212FB3F2270054A2E1 /* TSLBatteryStatusCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBatteryStatusCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBatteryStatusCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494222FB3F2270054A2E1 /* TSLBinaryEncoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBinaryEncoding.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBinaryEncoding.h"; sourceTree = SOURCE_ROOT; };
+		46E494232FB3F2270054A2E1 /* TSLBlockPermalockTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBlockPermalockTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBlockPermalockTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494242FB3F2270054A2E1 /* TSLCommandParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLCommandParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLCommandParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494252FB3F2270054A2E1 /* TSLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLConstants.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLConstants.h"; sourceTree = SOURCE_ROOT; };
+		46E494262FB3F2270054A2E1 /* TSLDataBankParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDataBankParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDataBankParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494272FB3F2270054A2E1 /* TSLDateCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDateCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDateCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494282FB3F2270054A2E1 /* TSLDateTimeCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDateTimeCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDateTimeCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494292FB3F2270054A2E1 /* TSLDeleteConfirmation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDeleteConfirmation.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDeleteConfirmation.h"; sourceTree = SOURCE_ROOT; };
+		46E4942A2FB3F2270054A2E1 /* TSLDeviceFileLineReceived.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDeviceFileLineReceived.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDeviceFileLineReceived.h"; sourceTree = SOURCE_ROOT; };
+		46E4942B2FB3F2270054A2E1 /* TSLEchoCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLEchoCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLEchoCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4942C2FB3F2270054A2E1 /* TSLExceptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLExceptions.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLExceptions.h"; sourceTree = SOURCE_ROOT; };
+		46E4942D2FB3F2270054A2E1 /* TSLExecuteAutorunFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLExecuteAutorunFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLExecuteAutorunFileCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4942E2FB3F2270054A2E1 /* TSLFactoryDefaultsCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLFactoryDefaultsCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLFactoryDefaultsCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4942F2FB3F2270054A2E1 /* TSLFindTagCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLFindTagCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLFindTagCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494302FB3F2270054A2E1 /* TSLInventoryCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLInventoryCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLInventoryCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494312FB3F2270054A2E1 /* TSLKillCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLKillCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLKillCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494322FB3F2270054A2E1 /* TSLLibraryConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLibraryConfiguration.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLibraryConfiguration.h"; sourceTree = SOURCE_ROOT; };
+		46E494332FB3F2270054A2E1 /* TSLLicenceKeyCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLicenceKeyCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLicenceKeyCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494342FB3F2270054A2E1 /* TSLLockCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLockCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLockCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494352FB3F2270054A2E1 /* TSLLoggerResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLoggerResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLoggerResponder.h"; sourceTree = SOURCE_ROOT; };
+		46E494362FB3F2270054A2E1 /* TSLParametersProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLParametersProtocol.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLParametersProtocol.h"; sourceTree = SOURCE_ROOT; };
+		46E494372FB3F2270054A2E1 /* TSLQAlgorithmParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLQAlgorithmParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLQAlgorithmParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494382FB3F2270054A2E1 /* TSLQtModeParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLQtModeParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLQtModeParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494392FB3F2270054A2E1 /* TSLQueryParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLQueryParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLQueryParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E4943A2FB3F2270054A2E1 /* TSLReadAutorunFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLReadAutorunFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLReadAutorunFileCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4943B2FB3F2270054A2E1 /* TSLReadLogFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLReadLogFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLReadLogFileCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4943C2FB3F2270054A2E1 /* TSLReadTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLReadTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLReadTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4943D2FB3F2270054A2E1 /* TSLResponseParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLResponseParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLResponseParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E4943E2FB3F2270054A2E1 /* TSLSelectControlParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSelectControlParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSelectControlParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E4943F2FB3F2270054A2E1 /* TSLSelectMaskParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSelectMaskParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSelectMaskParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494402FB3F2270054A2E1 /* TSLShowRegionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLShowRegionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLShowRegionCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494412FB3F2270054A2E1 /* TSLSignalStrengthResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSignalStrengthResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSignalStrengthResponder.h"; sourceTree = SOURCE_ROOT; };
+		46E494422FB3F2270054A2E1 /* TSLSleepCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSleepCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSleepCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494432FB3F2270054A2E1 /* TSLSleepTimeoutCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSleepTimeoutCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSleepTimeoutCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494442FB3F2270054A2E1 /* TSLSwitchActionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchActionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchActionCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494452FB3F2270054A2E1 /* TSLSwitchDoublePressCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchDoublePressCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchDoublePressCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494462FB3F2270054A2E1 /* TSLSwitchDoublePressUserActionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchDoublePressUserActionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchDoublePressUserActionCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494472FB3F2270054A2E1 /* TSLSwitchResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchResponder.h"; sourceTree = SOURCE_ROOT; };
+		46E494482FB3F2270054A2E1 /* TSLSwitchSinglePressCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchSinglePressCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchSinglePressCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494492FB3F2270054A2E1 /* TSLSwitchSinglePressUserActionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchSinglePressUserActionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchSinglePressUserActionCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4944A2FB3F2270054A2E1 /* TSLSwitchStateCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchStateCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchStateCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4944B2FB3F2270054A2E1 /* TSLSynchronousDispatchResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSynchronousDispatchResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSynchronousDispatchResponder.h"; sourceTree = SOURCE_ROOT; };
+		46E4944C2FB3F2270054A2E1 /* TSLTimeCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTimeCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTimeCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4944D2FB3F2270054A2E1 /* TSLTransponderAccessErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderAccessErrorCode.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderAccessErrorCode.h"; sourceTree = SOURCE_ROOT; };
+		46E4944E2FB3F2270054A2E1 /* TSLTransponderBackscatterErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderBackscatterErrorCode.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderBackscatterErrorCode.h"; sourceTree = SOURCE_ROOT; };
+		46E4944F2FB3F2270054A2E1 /* TSLTransponderData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderData.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderData.h"; sourceTree = SOURCE_ROOT; };
+		46E494502FB3F2270054A2E1 /* TSLTransponderMemoryCommandBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderMemoryCommandBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderMemoryCommandBase.h"; sourceTree = SOURCE_ROOT; };
+		46E494512FB3F2270054A2E1 /* TSLTransponderParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494522FB3F2270054A2E1 /* TSLTransponderReceivedDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderReceivedDelegate.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderReceivedDelegate.h"; sourceTree = SOURCE_ROOT; };
+		46E494532FB3F2270054A2E1 /* TSLTransponderResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderResponder.h"; sourceTree = SOURCE_ROOT; };
+		46E494542FB3F2270054A2E1 /* TSLTransponderSelectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderSelectCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderSelectCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494552FB3F2270054A2E1 /* TSLTriState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTriState.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTriState.h"; sourceTree = SOURCE_ROOT; };
+		46E494562FB3F2270054A2E1 /* TSLVersionInformationCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLVersionInformationCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLVersionInformationCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494572FB3F2270054A2E1 /* TSLVolumeParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLVolumeParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLVolumeParameters.h"; sourceTree = SOURCE_ROOT; };
+		46E494582FB3F2270054A2E1 /* TSLWriteAutorunFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLWriteAutorunFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLWriteAutorunFileCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E494592FB3F2270054A2E1 /* TSLWriteSingleTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLWriteSingleTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLWriteSingleTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
+		46E4945A2FB3F2270054A2E1 /* TSLWriteTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLWriteTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLWriteTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		467892822FB5659D00672B80 /* Exceptions for "cardex" folder in "cardex" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 465F60352FB3889100D492D1 /* cardex */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		465F60382FB3889100D492D1 /* cardex */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				467892822FB5659D00672B80 /* Exceptions for "cardex" folder in "cardex" target */,
+			);
+			path = cardex;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		465F60332FB3889100D492D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				469D4FBB2FB54468005CA6DB /* TSLAsciiCommands.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		465F602D2FB3889100D492D1 = {
+			isa = PBXGroup;
+			children = (
+				46E494082FB3EFB50054A2E1 /* TSLAsciiCommands.xcframework */,
+				46E4940B2FB3F1FF0054A2E1 /* TSL Headers */,
+				465F60382FB3889100D492D1 /* cardex */,
+				465F60372FB3889100D492D1 /* Products */,
+				467892AF2FB609B400672B80 /* cardex.entitlements */,
+			);
+			sourceTree = "<group>";
+		};
+		465F60372FB3889100D492D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				465F60362FB3889100D492D1 /* cardex.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46E4940B2FB3F1FF0054A2E1 /* TSL Headers */ = {
+			isa = PBXGroup;
+			children = (
+				46E4940C2FB3F2270054A2E1 /* TSLAbortCommand.h */,
+				46E4940D2FB3F2270054A2E1 /* TSLAlertCommand.h */,
+				46E4940E2FB3F2270054A2E1 /* TSLAllParameters.h */,
+				46E4940F2FB3F2270054A2E1 /* TSLAntennaParameters.h */,
+				46E494102FB3F2270054A2E1 /* TSLAsciiCommand.h */,
+				46E494112FB3F2270054A2E1 /* TSLAsciiCommandBase.h */,
+				46E494122FB3F2270054A2E1 /* TSLAsciiCommander.h */,
+				46E494132FB3F2270054A2E1 /* TSLAsciiCommandExecuting.h */,
+				46E494142FB3F2270054A2E1 /* TSLAsciiCommandExecutorBase.h */,
+				46E494152FB3F2270054A2E1 /* TSLAsciiCommandLibraryResponderBase.h */,
+				46E494162FB3F2270054A2E1 /* TSLAsciiCommandResponder.h */,
+				46E494172FB3F2270054A2E1 /* TSLAsciiCommandResponderBase.h */,
+				46E494182FB3F2270054A2E1 /* TSLAsciiCommandResponderDelegate.h */,
+				46E494192FB3F2270054A2E1 /* TSLAsciiCommandResponseNotifying.h */,
+				46E4941A2FB3F2270054A2E1 /* TSLAsciiCommands.h */,
+				46E4941B2FB3F2270054A2E1 /* TSLAsciiSelfResponderCommandBase.h */,
+				46E4941C2FB3F2270054A2E1 /* TSLAutorunCommand.h */,
+				46E4941D2FB3F2270054A2E1 /* TSLAvailabilityMacros.h */,
+				46E4941E2FB3F2270054A2E1 /* TSLBarcodeCommand.h */,
+				46E4941F2FB3F2270054A2E1 /* TSLBatteryHealthData.h */,
+				46E494202FB3F2270054A2E1 /* TSLBatteryServiceData.h */,
+				46E494212FB3F2270054A2E1 /* TSLBatteryStatusCommand.h */,
+				46E494222FB3F2270054A2E1 /* TSLBinaryEncoding.h */,
+				46E494232FB3F2270054A2E1 /* TSLBlockPermalockTransponderCommand.h */,
+				46E494242FB3F2270054A2E1 /* TSLCommandParameters.h */,
+				46E494252FB3F2270054A2E1 /* TSLConstants.h */,
+				46E494262FB3F2270054A2E1 /* TSLDataBankParameters.h */,
+				46E494272FB3F2270054A2E1 /* TSLDateCommand.h */,
+				46E494282FB3F2270054A2E1 /* TSLDateTimeCommand.h */,
+				46E494292FB3F2270054A2E1 /* TSLDeleteConfirmation.h */,
+				46E4942A2FB3F2270054A2E1 /* TSLDeviceFileLineReceived.h */,
+				46E4942B2FB3F2270054A2E1 /* TSLEchoCommand.h */,
+				46E4942C2FB3F2270054A2E1 /* TSLExceptions.h */,
+				46E4942D2FB3F2270054A2E1 /* TSLExecuteAutorunFileCommand.h */,
+				46E4942E2FB3F2270054A2E1 /* TSLFactoryDefaultsCommand.h */,
+				46E4942F2FB3F2270054A2E1 /* TSLFindTagCommand.h */,
+				46E494302FB3F2270054A2E1 /* TSLInventoryCommand.h */,
+				46E494312FB3F2270054A2E1 /* TSLKillCommand.h */,
+				46E494322FB3F2270054A2E1 /* TSLLibraryConfiguration.h */,
+				46E494332FB3F2270054A2E1 /* TSLLicenceKeyCommand.h */,
+				46E494342FB3F2270054A2E1 /* TSLLockCommand.h */,
+				46E494352FB3F2270054A2E1 /* TSLLoggerResponder.h */,
+				46E494362FB3F2270054A2E1 /* TSLParametersProtocol.h */,
+				46E494372FB3F2270054A2E1 /* TSLQAlgorithmParameters.h */,
+				46E494382FB3F2270054A2E1 /* TSLQtModeParameters.h */,
+				46E494392FB3F2270054A2E1 /* TSLQueryParameters.h */,
+				46E4943A2FB3F2270054A2E1 /* TSLReadAutorunFileCommand.h */,
+				46E4943B2FB3F2270054A2E1 /* TSLReadLogFileCommand.h */,
+				46E4943C2FB3F2270054A2E1 /* TSLReadTransponderCommand.h */,
+				46E4943D2FB3F2270054A2E1 /* TSLResponseParameters.h */,
+				46E4943E2FB3F2270054A2E1 /* TSLSelectControlParameters.h */,
+				46E4943F2FB3F2270054A2E1 /* TSLSelectMaskParameters.h */,
+				46E494402FB3F2270054A2E1 /* TSLShowRegionCommand.h */,
+				46E494412FB3F2270054A2E1 /* TSLSignalStrengthResponder.h */,
+				46E494422FB3F2270054A2E1 /* TSLSleepCommand.h */,
+				46E494432FB3F2270054A2E1 /* TSLSleepTimeoutCommand.h */,
+				46E494442FB3F2270054A2E1 /* TSLSwitchActionCommand.h */,
+				46E494452FB3F2270054A2E1 /* TSLSwitchDoublePressCommand.h */,
+				46E494462FB3F2270054A2E1 /* TSLSwitchDoublePressUserActionCommand.h */,
+				46E494472FB3F2270054A2E1 /* TSLSwitchResponder.h */,
+				46E494482FB3F2270054A2E1 /* TSLSwitchSinglePressCommand.h */,
+				46E494492FB3F2270054A2E1 /* TSLSwitchSinglePressUserActionCommand.h */,
+				46E4944A2FB3F2270054A2E1 /* TSLSwitchStateCommand.h */,
+				46E4944B2FB3F2270054A2E1 /* TSLSynchronousDispatchResponder.h */,
+				46E4944C2FB3F2270054A2E1 /* TSLTimeCommand.h */,
+				46E4944D2FB3F2270054A2E1 /* TSLTransponderAccessErrorCode.h */,
+				46E4944E2FB3F2270054A2E1 /* TSLTransponderBackscatterErrorCode.h */,
+				46E4944F2FB3F2270054A2E1 /* TSLTransponderData.h */,
+				46E494502FB3F2270054A2E1 /* TSLTransponderMemoryCommandBase.h */,
+				46E494512FB3F2270054A2E1 /* TSLTransponderParameters.h */,
+				46E494522FB3F2270054A2E1 /* TSLTransponderReceivedDelegate.h */,
+				46E494532FB3F2270054A2E1 /* TSLTransponderResponder.h */,
+				46E494542FB3F2270054A2E1 /* TSLTransponderSelectCommand.h */,
+				46E494552FB3F2270054A2E1 /* TSLTriState.h */,
+				46E494562FB3F2270054A2E1 /* TSLVersionInformationCommand.h */,
+				46E494572FB3F2270054A2E1 /* TSLVolumeParameters.h */,
+				46E494582FB3F2270054A2E1 /* TSLWriteAutorunFileCommand.h */,
+				46E494592FB3F2270054A2E1 /* TSLWriteSingleTransponderCommand.h */,
+				46E4945A2FB3F2270054A2E1 /* TSLWriteTransponderCommand.h */,
+			);
+			path = "TSL Headers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		465F60352FB3889100D492D1 /* cardex */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 465F60412FB3889200D492D1 /* Build configuration list for PBXNativeTarget "cardex" */;
+			buildPhases = (
+				465F60322FB3889100D492D1 /* Sources */,
+				465F60332FB3889100D492D1 /* Frameworks */,
+				465F60342FB3889100D492D1 /* Resources */,
+				469D4FBD2FB54468005CA6DB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				465F60382FB3889100D492D1 /* cardex */,
+			);
+			name = cardex;
+			packageProductDependencies = (
+			);
+			productName = cardex;
+			productReference = 465F60362FB3889100D492D1 /* cardex.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		465F602E2FB3889100D492D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2650;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					465F60352FB3889100D492D1 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+				};
+			};
+			buildConfigurationList = 465F60312FB3889100D492D1 /* Build configuration list for PBXProject "cardex" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 465F602D2FB3889100D492D1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 465F60372FB3889100D492D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				465F60352FB3889100D492D1 /* cardex */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		465F60342FB3889100D492D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		465F60322FB3889100D492D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		465F603F2FB3889200D492D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 29AKDF837Q;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		465F60402FB3889200D492D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 29AKDF837Q;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		465F60422FB3889200D492D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = cardex/cardexDebug.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 29AKDF837Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cardex/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Cardex uses Bluetooth to pair with and connect to your RFID reader.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Cardex uses Bluetooth to pair with and connect to your RFID reader.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to scan ISBN barcodes.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.elder-gods.cardex";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		465F60432FB3889200D492D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 29AKDF837Q;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cardex/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Cardex uses Bluetooth to pair with and connect to your RFID reader.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Cardex uses Bluetooth to pair with and connect to your RFID reader.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to scan ISBN barcodes.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.elder-gods.cardex";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		465F60312FB3889100D492D1 /* Build configuration list for PBXProject "cardex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				465F603F2FB3889200D492D1 /* Debug */,
+				465F60402FB3889200D492D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		465F60412FB3889200D492D1 /* Build configuration list for PBXNativeTarget "cardex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				465F60422FB3889200D492D1 /* Debug */,
+				465F60432FB3889200D492D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 465F602E2FB3889100D492D1 /* Project object */;
+}
