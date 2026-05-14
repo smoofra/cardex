@@ -62,6 +62,7 @@ struct ContentView: View {
 
                 if let isbn = scannedISBN, let epc = scannedEPC {
                     Button {
+                        rfidService.clearTags()
                         save(isbn: isbn, epc: epc)
                     } label: {
                         Label("Save", systemImage: "square.and.arrow.down")
