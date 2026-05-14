@@ -26,88 +26,180 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		461417942FB635B000AB6E3A /* TSLAbortCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAbortCommand.html; sourceTree = "<group>"; };
+		461417952FB635B000AB6E3A /* TSLAlertCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAlertCommand.html; sourceTree = "<group>"; };
+		461417962FB635B000AB6E3A /* TSLAsciiCommandBase.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandBase.html; sourceTree = "<group>"; };
+		461417972FB635B000AB6E3A /* TSLAsciiCommander.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommander.html; sourceTree = "<group>"; };
+		461417982FB635B000AB6E3A /* TSLAsciiCommandExecutorBase.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandExecutorBase.html; sourceTree = "<group>"; };
+		461417992FB635B000AB6E3A /* TSLAsciiCommandLibraryResponderBase.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandLibraryResponderBase.html; sourceTree = "<group>"; };
+		4614179A2FB635B000AB6E3A /* TSLAsciiCommandResponderBase.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandResponderBase.html; sourceTree = "<group>"; };
+		4614179B2FB635B000AB6E3A /* TSLAsciiSelfResponderCommandBase.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiSelfResponderCommandBase.html; sourceTree = "<group>"; };
+		4614179C2FB635B000AB6E3A /* TSLAutorunCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAutorunCommand.html; sourceTree = "<group>"; };
+		4614179D2FB635B000AB6E3A /* TSLBarcodeCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLBarcodeCommand.html; sourceTree = "<group>"; };
+		4614179E2FB635B000AB6E3A /* TSLBatteryHealthData.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLBatteryHealthData.html; sourceTree = "<group>"; };
+		4614179F2FB635B000AB6E3A /* TSLBatteryServiceData.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLBatteryServiceData.html; sourceTree = "<group>"; };
+		461417A02FB635B000AB6E3A /* TSLBatteryStatusCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLBatteryStatusCommand.html; sourceTree = "<group>"; };
+		461417A12FB635B000AB6E3A /* TSLBinaryEncoding.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLBinaryEncoding.html; sourceTree = "<group>"; };
+		461417A22FB635B000AB6E3A /* TSLBlockPermalockTransponderCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLBlockPermalockTransponderCommand.html; sourceTree = "<group>"; };
+		461417A32FB635B000AB6E3A /* TSLDataBankParameters.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLDataBankParameters.html; sourceTree = "<group>"; };
+		461417A42FB635B000AB6E3A /* TSLDateCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLDateCommand.html; sourceTree = "<group>"; };
+		461417A52FB635B000AB6E3A /* TSLDateTimeCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLDateTimeCommand.html; sourceTree = "<group>"; };
+		461417A62FB635B000AB6E3A /* TSLDeleteConfirmation.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLDeleteConfirmation.html; sourceTree = "<group>"; };
+		461417A72FB635B000AB6E3A /* TSLEchoCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLEchoCommand.html; sourceTree = "<group>"; };
+		461417A82FB635B000AB6E3A /* TSLExecuteAutorunFileCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLExecuteAutorunFileCommand.html; sourceTree = "<group>"; };
+		461417A92FB635B000AB6E3A /* TSLFactoryDefaultsCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLFactoryDefaultsCommand.html; sourceTree = "<group>"; };
+		461417AA2FB635B000AB6E3A /* TSLFindTagCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLFindTagCommand.html; sourceTree = "<group>"; };
+		461417AB2FB635B000AB6E3A /* TSLInventoryCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLInventoryCommand.html; sourceTree = "<group>"; };
+		461417AC2FB635B000AB6E3A /* TSLKillCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLKillCommand.html; sourceTree = "<group>"; };
+		461417AD2FB635B000AB6E3A /* TSLLibraryConfiguration.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLLibraryConfiguration.html; sourceTree = "<group>"; };
+		461417AE2FB635B000AB6E3A /* TSLLicenceKeyCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLLicenceKeyCommand.html; sourceTree = "<group>"; };
+		461417AF2FB635B000AB6E3A /* TSLLockCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLLockCommand.html; sourceTree = "<group>"; };
+		461417B02FB635B000AB6E3A /* TSLLoggerResponder.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLLoggerResponder.html; sourceTree = "<group>"; };
+		461417B12FB635B000AB6E3A /* TSLQAlgorithmParameters.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLQAlgorithmParameters.html; sourceTree = "<group>"; };
+		461417B22FB635B000AB6E3A /* TSLQtModeParameters.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLQtModeParameters.html; sourceTree = "<group>"; };
+		461417B32FB635B000AB6E3A /* TSLQueryParameters.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLQueryParameters.html; sourceTree = "<group>"; };
+		461417B42FB635B000AB6E3A /* TSLReadAutorunFileCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLReadAutorunFileCommand.html; sourceTree = "<group>"; };
+		461417B52FB635B000AB6E3A /* TSLReadLogFileCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLReadLogFileCommand.html; sourceTree = "<group>"; };
+		461417B62FB635B000AB6E3A /* TSLReadTransponderCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLReadTransponderCommand.html; sourceTree = "<group>"; };
+		461417B72FB635B000AB6E3A /* TSLResponseParameters.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLResponseParameters.html; sourceTree = "<group>"; };
+		461417B82FB635B000AB6E3A /* TSLSelectControlParameters.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSelectControlParameters.html; sourceTree = "<group>"; };
+		461417B92FB635B000AB6E3A /* TSLShowRegionCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLShowRegionCommand.html; sourceTree = "<group>"; };
+		461417BA2FB635B000AB6E3A /* TSLSignalStrengthResponder.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSignalStrengthResponder.html; sourceTree = "<group>"; };
+		461417BB2FB635B000AB6E3A /* TSLSleepCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSleepCommand.html; sourceTree = "<group>"; };
+		461417BC2FB635B000AB6E3A /* TSLSleepTimeoutCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSleepTimeoutCommand.html; sourceTree = "<group>"; };
+		461417BD2FB635B000AB6E3A /* TSLSwitchActionCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchActionCommand.html; sourceTree = "<group>"; };
+		461417BE2FB635B000AB6E3A /* TSLSwitchDoublePressCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchDoublePressCommand.html; sourceTree = "<group>"; };
+		461417BF2FB635B000AB6E3A /* TSLSwitchDoublePressUserActionCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchDoublePressUserActionCommand.html; sourceTree = "<group>"; };
+		461417C02FB635B000AB6E3A /* TSLSwitchResponder.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchResponder.html; sourceTree = "<group>"; };
+		461417C12FB635B000AB6E3A /* TSLSwitchSinglePressCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchSinglePressCommand.html; sourceTree = "<group>"; };
+		461417C22FB635B000AB6E3A /* TSLSwitchSinglePressUserActionCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchSinglePressUserActionCommand.html; sourceTree = "<group>"; };
+		461417C32FB635B000AB6E3A /* TSLSwitchStateCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchStateCommand.html; sourceTree = "<group>"; };
+		461417C42FB635B000AB6E3A /* TSLTimeCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTimeCommand.html; sourceTree = "<group>"; };
+		461417C52FB635B000AB6E3A /* TSLTransponderAccessErrorCode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderAccessErrorCode.html; sourceTree = "<group>"; };
+		461417C62FB635B000AB6E3A /* TSLTransponderBackscatterErrorCode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderBackscatterErrorCode.html; sourceTree = "<group>"; };
+		461417C72FB635B000AB6E3A /* TSLTransponderData.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderData.html; sourceTree = "<group>"; };
+		461417C82FB635B000AB6E3A /* TSLTransponderMemoryCommandBase.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderMemoryCommandBase.html; sourceTree = "<group>"; };
+		461417C92FB635B000AB6E3A /* TSLTransponderResponder.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderResponder.html; sourceTree = "<group>"; };
+		461417CA2FB635B000AB6E3A /* TSLTransponderSelectCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderSelectCommand.html; sourceTree = "<group>"; };
+		461417CB2FB635B000AB6E3A /* TSLTriState.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTriState.html; sourceTree = "<group>"; };
+		461417CC2FB635B000AB6E3A /* TSLVersionInformationCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLVersionInformationCommand.html; sourceTree = "<group>"; };
+		461417CD2FB635B000AB6E3A /* TSLVolumeParameters.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLVolumeParameters.html; sourceTree = "<group>"; };
+		461417CE2FB635B000AB6E3A /* TSLWriteAutorunFileCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLWriteAutorunFileCommand.html; sourceTree = "<group>"; };
+		461417CF2FB635B000AB6E3A /* TSLWriteSingleTransponderCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLWriteSingleTransponderCommand.html; sourceTree = "<group>"; };
+		461417D02FB635B000AB6E3A /* TSLWriteTransponderCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLWriteTransponderCommand.html; sourceTree = "<group>"; };
+		461417D22FB635B000AB6E3A /* highlight.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = highlight.css; sourceTree = "<group>"; };
+		461417D32FB635B000AB6E3A /* jazzy.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = jazzy.css; sourceTree = "<group>"; };
+		461417D52FB635B000AB6E3A /* TSLAsciiCommands.docset */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TSLAsciiCommands.docset; sourceTree = "<group>"; };
+		461417D62FB635B000AB6E3A /* TSLAsciiCommands.tgz */ = {isa = PBXFileReference; lastKnownFileType = file; path = TSLAsciiCommands.tgz; sourceTree = "<group>"; };
+		461417D82FB635B000AB6E3A /* carat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carat.png; sourceTree = "<group>"; };
+		461417D92FB635B000AB6E3A /* dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash.png; sourceTree = "<group>"; };
+		461417DA2FB635B000AB6E3A /* ExternalAccessoryProtocolSupport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExternalAccessoryProtocolSupport.png; sourceTree = "<group>"; };
+		461417DB2FB635B000AB6E3A /* Frameworks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Frameworks.png; sourceTree = "<group>"; };
+		461417DC2FB635B000AB6E3A /* gh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gh.png; sourceTree = "<group>"; };
+		461417DD2FB635B000AB6E3A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		461417DE2FB635B000AB6E3A /* spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = spinner.gif; sourceTree = "<group>"; };
+		461417DF2FB635B000AB6E3A /* TSLReaders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TSLReaders.png; sourceTree = "<group>"; };
+		461417E02FB635B000AB6E3A /* xcframework.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xcframework.png; sourceTree = "<group>"; };
+		461417E22FB635B000AB6E3A /* jazzy.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jazzy.js; sourceTree = "<group>"; };
+		461417E32FB635B000AB6E3A /* jazzy.search.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jazzy.search.js; sourceTree = "<group>"; };
+		461417E42FB635B000AB6E3A /* jquery.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		461417E52FB635B000AB6E3A /* lunr.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = lunr.min.js; sourceTree = "<group>"; };
+		461417E62FB635B000AB6E3A /* typeahead.jquery.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = typeahead.jquery.js; sourceTree = "<group>"; };
+		461417E82FB635B000AB6E3A /* TSLAntennaParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAntennaParametersProtocol.html; sourceTree = "<group>"; };
+		461417E92FB635B000AB6E3A /* TSLAsciiCommand.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommand.html; sourceTree = "<group>"; };
+		461417EA2FB635B000AB6E3A /* TSLAsciiCommanderSupportedDeviceDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommanderSupportedDeviceDelegate.html; sourceTree = "<group>"; };
+		461417EB2FB635B000AB6E3A /* TSLAsciiCommandExecuting.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandExecuting.html; sourceTree = "<group>"; };
+		461417EC2FB635B000AB6E3A /* TSLAsciiCommandResponder.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandResponder.html; sourceTree = "<group>"; };
+		461417ED2FB635B000AB6E3A /* TSLAsciiCommandResponderDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandResponderDelegate.html; sourceTree = "<group>"; };
+		461417EE2FB635B000AB6E3A /* TSLAsciiCommandResponseNotifying.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLAsciiCommandResponseNotifying.html; sourceTree = "<group>"; };
+		461417EF2FB635B000AB6E3A /* TSLBarcodeCommandBarcodeReceivedDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLBarcodeCommandBarcodeReceivedDelegate.html; sourceTree = "<group>"; };
+		461417F02FB635B000AB6E3A /* TSLCommandParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLCommandParametersProtocol.html; sourceTree = "<group>"; };
+		461417F12FB635B000AB6E3A /* TSLDataBankParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLDataBankParametersProtocol.html; sourceTree = "<group>"; };
+		461417F22FB635B000AB6E3A /* TSLInventoryCommandTransponderReceivedDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLInventoryCommandTransponderReceivedDelegate.html; sourceTree = "<group>"; };
+		461417F32FB635B000AB6E3A /* TSLParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLParametersProtocol.html; sourceTree = "<group>"; };
+		461417F42FB635B000AB6E3A /* TSLQAlgorithmParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLQAlgorithmParametersProtocol.html; sourceTree = "<group>"; };
+		461417F52FB635B000AB6E3A /* TSLQtModeParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLQtModeParametersProtocol.html; sourceTree = "<group>"; };
+		461417F62FB635B000AB6E3A /* TSLQueryParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLQueryParametersProtocol.html; sourceTree = "<group>"; };
+		461417F72FB635B000AB6E3A /* TSLReadCommandTransponderReceivedDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLReadCommandTransponderReceivedDelegate.html; sourceTree = "<group>"; };
+		461417F82FB635B000AB6E3A /* TSLResponseParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLResponseParametersProtocol.html; sourceTree = "<group>"; };
+		461417F92FB635B000AB6E3A /* TSLSelectControlParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSelectControlParametersProtocol.html; sourceTree = "<group>"; };
+		461417FA2FB635B000AB6E3A /* TSLSelectMaskParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSelectMaskParametersProtocol.html; sourceTree = "<group>"; };
+		461417FB2FB635B000AB6E3A /* TSLSwitchResponderStateReceivedDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLSwitchResponderStateReceivedDelegate.html; sourceTree = "<group>"; };
+		461417FC2FB635B000AB6E3A /* TSLTransponderParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderParametersProtocol.html; sourceTree = "<group>"; };
+		461417FD2FB635B000AB6E3A /* TSLTransponderReceivedDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLTransponderReceivedDelegate.html; sourceTree = "<group>"; };
+		461417FE2FB635B000AB6E3A /* TSLVolumeParametersProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLVolumeParametersProtocol.html; sourceTree = "<group>"; };
+		461417FF2FB635B000AB6E3A /* TSLWriteCommandTransponderReceivedDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLWriteCommandTransponderReceivedDelegate.html; sourceTree = "<group>"; };
+		461418002FB635B000AB6E3A /* TSLWriteSingleCommandTransponderReceivedDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSLWriteSingleCommandTransponderReceivedDelegate.html; sourceTree = "<group>"; };
+		461418022FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418042FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418062FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418082FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614180A2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614180C2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614180E2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418102FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418122FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418142FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418162FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418182FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614181A2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614181C2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614181E2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418202FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418222FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418242FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418262FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418282FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614182A2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614182C2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		4614182E2FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418302FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418322FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418342FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418362FB635B000AB6E3A /* .html */ = {isa = PBXFileReference; lastKnownFileType = text; path = .html; sourceTree = "<group>"; };
+		461418382FB635B000AB6E3A /* TSL_AlertDuration.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_AlertDuration.html; sourceTree = "<group>"; };
+		461418392FB635B000AB6E3A /* TSL_AudibleAlertMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_AudibleAlertMode.html; sourceTree = "<group>"; };
+		4614183A2FB635B000AB6E3A /* TSL_BlockPermalockMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_BlockPermalockMode.html; sourceTree = "<group>"; };
+		4614183B2FB635B000AB6E3A /* TSL_BuzzerTone.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_BuzzerTone.html; sourceTree = "<group>"; };
+		4614183C2FB635B000AB6E3A /* TSL_ChargeState.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_ChargeState.html; sourceTree = "<group>"; };
+		4614183D2FB635B000AB6E3A /* TSL_DataBank.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_DataBank.html; sourceTree = "<group>"; };
+		4614183E2FB635B000AB6E3A /* TSL_DeleteConfirmation.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_DeleteConfirmation.html; sourceTree = "<group>"; };
+		4614183F2FB635B000AB6E3A /* TSL_DuplicateRemovalMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_DuplicateRemovalMode.html; sourceTree = "<group>"; };
+		461418402FB635B000AB6E3A /* TSL_FileIndex.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_FileIndex.html; sourceTree = "<group>"; };
+		461418412FB635B000AB6E3A /* TSL_ImpinjBlockWriteMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_ImpinjBlockWriteMode.html; sourceTree = "<group>"; };
+		461418422FB635B000AB6E3A /* TSL_PopLoqMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_PopLoqMode.html; sourceTree = "<group>"; };
+		461418432FB635B000AB6E3A /* TSL_QAlgorithm.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_QAlgorithm.html; sourceTree = "<group>"; };
+		461418442FB635B000AB6E3A /* TSL_QtMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_QtMode.html; sourceTree = "<group>"; };
+		461418452FB635B000AB6E3A /* TSL_QuerySelect.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_QuerySelect.html; sourceTree = "<group>"; };
+		461418462FB635B000AB6E3A /* TSL_QuerySession.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_QuerySession.html; sourceTree = "<group>"; };
+		461418472FB635B000AB6E3A /* TSL_QueryTarget.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_QueryTarget.html; sourceTree = "<group>"; };
+		461418482FB635B000AB6E3A /* TSL_ReconnectionMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_ReconnectionMode.html; sourceTree = "<group>"; };
+		461418492FB635B000AB6E3A /* TSL_SelectAction.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_SelectAction.html; sourceTree = "<group>"; };
+		4614184A2FB635B000AB6E3A /* TSL_SelectTarget.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_SelectTarget.html; sourceTree = "<group>"; };
+		4614184B2FB635B000AB6E3A /* TSL_StartStop.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_StartStop.html; sourceTree = "<group>"; };
+		4614184C2FB635B000AB6E3A /* TSL_SwitchAction.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_SwitchAction.html; sourceTree = "<group>"; };
+		4614184D2FB635B000AB6E3A /* TSL_SwitchState.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_SwitchState.html; sourceTree = "<group>"; };
+		4614184E2FB635B000AB6E3A /* TSL_TransponderAccessErrorCode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_TransponderAccessErrorCode.html; sourceTree = "<group>"; };
+		4614184F2FB635B000AB6E3A /* TSL_TransponderBackscatterErrorCode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_TransponderBackscatterErrorCode.html; sourceTree = "<group>"; };
+		461418502FB635B000AB6E3A /* TSL_TriState.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_TriState.html; sourceTree = "<group>"; };
+		461418512FB635B000AB6E3A /* TSL_Volume.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_Volume.html; sourceTree = "<group>"; };
+		461418522FB635B000AB6E3A /* TSL_WriteMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TSL_WriteMode.html; sourceTree = "<group>"; };
+		461418542FB635B000AB6E3A /* Classes.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Classes.html; sourceTree = "<group>"; };
+		461418552FB635B000AB6E3A /* Constants.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Constants.html; sourceTree = "<group>"; };
+		461418562FB635B000AB6E3A /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		461418572FB635B000AB6E3A /* Protocols.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Protocols.html; sourceTree = "<group>"; };
+		461418582FB635B000AB6E3A /* Type Definitions.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "Type Definitions.html"; sourceTree = "<group>"; };
+		461418782FB635B000AB6E3A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		461418792FB635B000AB6E3A /* App Store Submission Process.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "App Store Submission Process.pdf"; sourceTree = "<group>"; };
+		4614187A2FB635B000AB6E3A /* Framework Version History.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Framework Version History.txt"; sourceTree = "<group>"; };
+		4614187C2FB635B000AB6E3A /* Readers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Readers.xcassets; sourceTree = "<group>"; };
+		4614187D2FB635B000AB6E3A /* TSLAsciiCommands.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TSLAsciiCommands.framework; sourceTree = "<group>"; };
+		4614187E2FB635B000AB6E3A /* TSLAsciiCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TSLAsciiCommands.xcframework; sourceTree = "<group>"; };
+		4614187F2FB635B000AB6E3A /* UHF_ASCII_2.0_Mobile_SDK_User_Guide_iOS.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UHF_ASCII_2.0_Mobile_SDK_User_Guide_iOS.pdf; sourceTree = "<group>"; };
+		461418802FB635B000AB6E3A /* UHF_ASCII_2.0_SDK_Licence_Agreement_iOS.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UHF_ASCII_2.0_SDK_Licence_Agreement_iOS.pdf; sourceTree = "<group>"; };
 		465F60362FB3889100D492D1 /* cardex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cardex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		467892AF2FB609B400672B80 /* cardex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cardex.entitlements; sourceTree = "<group>"; };
 		46E494082FB3EFB50054A2E1 /* TSLAsciiCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TSLAsciiCommands.xcframework; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework"; sourceTree = SOURCE_ROOT; };
-		46E4940C2FB3F2270054A2E1 /* TSLAbortCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAbortCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAbortCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4940D2FB3F2270054A2E1 /* TSLAlertCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAlertCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAlertCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4940E2FB3F2270054A2E1 /* TSLAllParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAllParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAllParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E4940F2FB3F2270054A2E1 /* TSLAntennaParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAntennaParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAntennaParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494102FB3F2270054A2E1 /* TSLAsciiCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494112FB3F2270054A2E1 /* TSLAsciiCommandBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandBase.h"; sourceTree = SOURCE_ROOT; };
-		46E494122FB3F2270054A2E1 /* TSLAsciiCommander.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommander.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommander.h"; sourceTree = SOURCE_ROOT; };
-		46E494132FB3F2270054A2E1 /* TSLAsciiCommandExecuting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandExecuting.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandExecuting.h"; sourceTree = SOURCE_ROOT; };
-		46E494142FB3F2270054A2E1 /* TSLAsciiCommandExecutorBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandExecutorBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandExecutorBase.h"; sourceTree = SOURCE_ROOT; };
-		46E494152FB3F2270054A2E1 /* TSLAsciiCommandLibraryResponderBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandLibraryResponderBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandLibraryResponderBase.h"; sourceTree = SOURCE_ROOT; };
-		46E494162FB3F2270054A2E1 /* TSLAsciiCommandResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponder.h"; sourceTree = SOURCE_ROOT; };
-		46E494172FB3F2270054A2E1 /* TSLAsciiCommandResponderBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponderBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponderBase.h"; sourceTree = SOURCE_ROOT; };
-		46E494182FB3F2270054A2E1 /* TSLAsciiCommandResponderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponderDelegate.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponderDelegate.h"; sourceTree = SOURCE_ROOT; };
-		46E494192FB3F2270054A2E1 /* TSLAsciiCommandResponseNotifying.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommandResponseNotifying.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommandResponseNotifying.h"; sourceTree = SOURCE_ROOT; };
-		46E4941A2FB3F2270054A2E1 /* TSLAsciiCommands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiCommands.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiCommands.h"; sourceTree = SOURCE_ROOT; };
-		46E4941B2FB3F2270054A2E1 /* TSLAsciiSelfResponderCommandBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAsciiSelfResponderCommandBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAsciiSelfResponderCommandBase.h"; sourceTree = SOURCE_ROOT; };
-		46E4941C2FB3F2270054A2E1 /* TSLAutorunCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAutorunCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAutorunCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4941D2FB3F2270054A2E1 /* TSLAvailabilityMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLAvailabilityMacros.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLAvailabilityMacros.h"; sourceTree = SOURCE_ROOT; };
-		46E4941E2FB3F2270054A2E1 /* TSLBarcodeCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBarcodeCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBarcodeCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4941F2FB3F2270054A2E1 /* TSLBatteryHealthData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBatteryHealthData.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBatteryHealthData.h"; sourceTree = SOURCE_ROOT; };
-		46E494202FB3F2270054A2E1 /* TSLBatteryServiceData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBatteryServiceData.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBatteryServiceData.h"; sourceTree = SOURCE_ROOT; };
-		46E494212FB3F2270054A2E1 /* TSLBatteryStatusCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBatteryStatusCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBatteryStatusCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494222FB3F2270054A2E1 /* TSLBinaryEncoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBinaryEncoding.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBinaryEncoding.h"; sourceTree = SOURCE_ROOT; };
-		46E494232FB3F2270054A2E1 /* TSLBlockPermalockTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLBlockPermalockTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLBlockPermalockTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494242FB3F2270054A2E1 /* TSLCommandParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLCommandParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLCommandParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494252FB3F2270054A2E1 /* TSLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLConstants.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLConstants.h"; sourceTree = SOURCE_ROOT; };
-		46E494262FB3F2270054A2E1 /* TSLDataBankParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDataBankParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDataBankParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494272FB3F2270054A2E1 /* TSLDateCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDateCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDateCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494282FB3F2270054A2E1 /* TSLDateTimeCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDateTimeCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDateTimeCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494292FB3F2270054A2E1 /* TSLDeleteConfirmation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDeleteConfirmation.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDeleteConfirmation.h"; sourceTree = SOURCE_ROOT; };
-		46E4942A2FB3F2270054A2E1 /* TSLDeviceFileLineReceived.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLDeviceFileLineReceived.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLDeviceFileLineReceived.h"; sourceTree = SOURCE_ROOT; };
-		46E4942B2FB3F2270054A2E1 /* TSLEchoCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLEchoCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLEchoCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4942C2FB3F2270054A2E1 /* TSLExceptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLExceptions.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLExceptions.h"; sourceTree = SOURCE_ROOT; };
-		46E4942D2FB3F2270054A2E1 /* TSLExecuteAutorunFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLExecuteAutorunFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLExecuteAutorunFileCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4942E2FB3F2270054A2E1 /* TSLFactoryDefaultsCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLFactoryDefaultsCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLFactoryDefaultsCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4942F2FB3F2270054A2E1 /* TSLFindTagCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLFindTagCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLFindTagCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494302FB3F2270054A2E1 /* TSLInventoryCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLInventoryCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLInventoryCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494312FB3F2270054A2E1 /* TSLKillCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLKillCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLKillCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494322FB3F2270054A2E1 /* TSLLibraryConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLibraryConfiguration.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLibraryConfiguration.h"; sourceTree = SOURCE_ROOT; };
-		46E494332FB3F2270054A2E1 /* TSLLicenceKeyCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLicenceKeyCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLicenceKeyCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494342FB3F2270054A2E1 /* TSLLockCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLockCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLockCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494352FB3F2270054A2E1 /* TSLLoggerResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLLoggerResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLLoggerResponder.h"; sourceTree = SOURCE_ROOT; };
-		46E494362FB3F2270054A2E1 /* TSLParametersProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLParametersProtocol.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLParametersProtocol.h"; sourceTree = SOURCE_ROOT; };
-		46E494372FB3F2270054A2E1 /* TSLQAlgorithmParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLQAlgorithmParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLQAlgorithmParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494382FB3F2270054A2E1 /* TSLQtModeParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLQtModeParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLQtModeParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494392FB3F2270054A2E1 /* TSLQueryParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLQueryParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLQueryParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E4943A2FB3F2270054A2E1 /* TSLReadAutorunFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLReadAutorunFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLReadAutorunFileCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4943B2FB3F2270054A2E1 /* TSLReadLogFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLReadLogFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLReadLogFileCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4943C2FB3F2270054A2E1 /* TSLReadTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLReadTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLReadTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4943D2FB3F2270054A2E1 /* TSLResponseParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLResponseParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLResponseParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E4943E2FB3F2270054A2E1 /* TSLSelectControlParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSelectControlParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSelectControlParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E4943F2FB3F2270054A2E1 /* TSLSelectMaskParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSelectMaskParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSelectMaskParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494402FB3F2270054A2E1 /* TSLShowRegionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLShowRegionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLShowRegionCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494412FB3F2270054A2E1 /* TSLSignalStrengthResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSignalStrengthResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSignalStrengthResponder.h"; sourceTree = SOURCE_ROOT; };
-		46E494422FB3F2270054A2E1 /* TSLSleepCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSleepCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSleepCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494432FB3F2270054A2E1 /* TSLSleepTimeoutCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSleepTimeoutCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSleepTimeoutCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494442FB3F2270054A2E1 /* TSLSwitchActionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchActionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchActionCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494452FB3F2270054A2E1 /* TSLSwitchDoublePressCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchDoublePressCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchDoublePressCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494462FB3F2270054A2E1 /* TSLSwitchDoublePressUserActionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchDoublePressUserActionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchDoublePressUserActionCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494472FB3F2270054A2E1 /* TSLSwitchResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchResponder.h"; sourceTree = SOURCE_ROOT; };
-		46E494482FB3F2270054A2E1 /* TSLSwitchSinglePressCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchSinglePressCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchSinglePressCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494492FB3F2270054A2E1 /* TSLSwitchSinglePressUserActionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchSinglePressUserActionCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchSinglePressUserActionCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4944A2FB3F2270054A2E1 /* TSLSwitchStateCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSwitchStateCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSwitchStateCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4944B2FB3F2270054A2E1 /* TSLSynchronousDispatchResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLSynchronousDispatchResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLSynchronousDispatchResponder.h"; sourceTree = SOURCE_ROOT; };
-		46E4944C2FB3F2270054A2E1 /* TSLTimeCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTimeCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTimeCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4944D2FB3F2270054A2E1 /* TSLTransponderAccessErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderAccessErrorCode.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderAccessErrorCode.h"; sourceTree = SOURCE_ROOT; };
-		46E4944E2FB3F2270054A2E1 /* TSLTransponderBackscatterErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderBackscatterErrorCode.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderBackscatterErrorCode.h"; sourceTree = SOURCE_ROOT; };
-		46E4944F2FB3F2270054A2E1 /* TSLTransponderData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderData.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderData.h"; sourceTree = SOURCE_ROOT; };
-		46E494502FB3F2270054A2E1 /* TSLTransponderMemoryCommandBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderMemoryCommandBase.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderMemoryCommandBase.h"; sourceTree = SOURCE_ROOT; };
-		46E494512FB3F2270054A2E1 /* TSLTransponderParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494522FB3F2270054A2E1 /* TSLTransponderReceivedDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderReceivedDelegate.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderReceivedDelegate.h"; sourceTree = SOURCE_ROOT; };
-		46E494532FB3F2270054A2E1 /* TSLTransponderResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderResponder.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderResponder.h"; sourceTree = SOURCE_ROOT; };
-		46E494542FB3F2270054A2E1 /* TSLTransponderSelectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTransponderSelectCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTransponderSelectCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494552FB3F2270054A2E1 /* TSLTriState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLTriState.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLTriState.h"; sourceTree = SOURCE_ROOT; };
-		46E494562FB3F2270054A2E1 /* TSLVersionInformationCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLVersionInformationCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLVersionInformationCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494572FB3F2270054A2E1 /* TSLVolumeParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLVolumeParameters.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLVolumeParameters.h"; sourceTree = SOURCE_ROOT; };
-		46E494582FB3F2270054A2E1 /* TSLWriteAutorunFileCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLWriteAutorunFileCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLWriteAutorunFileCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E494592FB3F2270054A2E1 /* TSLWriteSingleTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLWriteSingleTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLWriteSingleTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
-		46E4945A2FB3F2270054A2E1 /* TSLWriteTransponderCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLWriteTransponderCommand.h; path = "../TSL UHF ASCII 2.0 SDK v1.6.1/TSLAsciiCommands.xcframework/ios-arm64_armv7/TSLAsciiCommands.framework/Headers/TSLWriteTransponderCommand.h"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -143,11 +235,470 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		461417D12FB635B000AB6E3A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				461417942FB635B000AB6E3A /* TSLAbortCommand.html */,
+				461417952FB635B000AB6E3A /* TSLAlertCommand.html */,
+				461417962FB635B000AB6E3A /* TSLAsciiCommandBase.html */,
+				461417972FB635B000AB6E3A /* TSLAsciiCommander.html */,
+				461417982FB635B000AB6E3A /* TSLAsciiCommandExecutorBase.html */,
+				461417992FB635B000AB6E3A /* TSLAsciiCommandLibraryResponderBase.html */,
+				4614179A2FB635B000AB6E3A /* TSLAsciiCommandResponderBase.html */,
+				4614179B2FB635B000AB6E3A /* TSLAsciiSelfResponderCommandBase.html */,
+				4614179C2FB635B000AB6E3A /* TSLAutorunCommand.html */,
+				4614179D2FB635B000AB6E3A /* TSLBarcodeCommand.html */,
+				4614179E2FB635B000AB6E3A /* TSLBatteryHealthData.html */,
+				4614179F2FB635B000AB6E3A /* TSLBatteryServiceData.html */,
+				461417A02FB635B000AB6E3A /* TSLBatteryStatusCommand.html */,
+				461417A12FB635B000AB6E3A /* TSLBinaryEncoding.html */,
+				461417A22FB635B000AB6E3A /* TSLBlockPermalockTransponderCommand.html */,
+				461417A32FB635B000AB6E3A /* TSLDataBankParameters.html */,
+				461417A42FB635B000AB6E3A /* TSLDateCommand.html */,
+				461417A52FB635B000AB6E3A /* TSLDateTimeCommand.html */,
+				461417A62FB635B000AB6E3A /* TSLDeleteConfirmation.html */,
+				461417A72FB635B000AB6E3A /* TSLEchoCommand.html */,
+				461417A82FB635B000AB6E3A /* TSLExecuteAutorunFileCommand.html */,
+				461417A92FB635B000AB6E3A /* TSLFactoryDefaultsCommand.html */,
+				461417AA2FB635B000AB6E3A /* TSLFindTagCommand.html */,
+				461417AB2FB635B000AB6E3A /* TSLInventoryCommand.html */,
+				461417AC2FB635B000AB6E3A /* TSLKillCommand.html */,
+				461417AD2FB635B000AB6E3A /* TSLLibraryConfiguration.html */,
+				461417AE2FB635B000AB6E3A /* TSLLicenceKeyCommand.html */,
+				461417AF2FB635B000AB6E3A /* TSLLockCommand.html */,
+				461417B02FB635B000AB6E3A /* TSLLoggerResponder.html */,
+				461417B12FB635B000AB6E3A /* TSLQAlgorithmParameters.html */,
+				461417B22FB635B000AB6E3A /* TSLQtModeParameters.html */,
+				461417B32FB635B000AB6E3A /* TSLQueryParameters.html */,
+				461417B42FB635B000AB6E3A /* TSLReadAutorunFileCommand.html */,
+				461417B52FB635B000AB6E3A /* TSLReadLogFileCommand.html */,
+				461417B62FB635B000AB6E3A /* TSLReadTransponderCommand.html */,
+				461417B72FB635B000AB6E3A /* TSLResponseParameters.html */,
+				461417B82FB635B000AB6E3A /* TSLSelectControlParameters.html */,
+				461417B92FB635B000AB6E3A /* TSLShowRegionCommand.html */,
+				461417BA2FB635B000AB6E3A /* TSLSignalStrengthResponder.html */,
+				461417BB2FB635B000AB6E3A /* TSLSleepCommand.html */,
+				461417BC2FB635B000AB6E3A /* TSLSleepTimeoutCommand.html */,
+				461417BD2FB635B000AB6E3A /* TSLSwitchActionCommand.html */,
+				461417BE2FB635B000AB6E3A /* TSLSwitchDoublePressCommand.html */,
+				461417BF2FB635B000AB6E3A /* TSLSwitchDoublePressUserActionCommand.html */,
+				461417C02FB635B000AB6E3A /* TSLSwitchResponder.html */,
+				461417C12FB635B000AB6E3A /* TSLSwitchSinglePressCommand.html */,
+				461417C22FB635B000AB6E3A /* TSLSwitchSinglePressUserActionCommand.html */,
+				461417C32FB635B000AB6E3A /* TSLSwitchStateCommand.html */,
+				461417C42FB635B000AB6E3A /* TSLTimeCommand.html */,
+				461417C52FB635B000AB6E3A /* TSLTransponderAccessErrorCode.html */,
+				461417C62FB635B000AB6E3A /* TSLTransponderBackscatterErrorCode.html */,
+				461417C72FB635B000AB6E3A /* TSLTransponderData.html */,
+				461417C82FB635B000AB6E3A /* TSLTransponderMemoryCommandBase.html */,
+				461417C92FB635B000AB6E3A /* TSLTransponderResponder.html */,
+				461417CA2FB635B000AB6E3A /* TSLTransponderSelectCommand.html */,
+				461417CB2FB635B000AB6E3A /* TSLTriState.html */,
+				461417CC2FB635B000AB6E3A /* TSLVersionInformationCommand.html */,
+				461417CD2FB635B000AB6E3A /* TSLVolumeParameters.html */,
+				461417CE2FB635B000AB6E3A /* TSLWriteAutorunFileCommand.html */,
+				461417CF2FB635B000AB6E3A /* TSLWriteSingleTransponderCommand.html */,
+				461417D02FB635B000AB6E3A /* TSLWriteTransponderCommand.html */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		461417D42FB635B000AB6E3A /* css */ = {
+			isa = PBXGroup;
+			children = (
+				461417D22FB635B000AB6E3A /* highlight.css */,
+				461417D32FB635B000AB6E3A /* jazzy.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		461417D72FB635B000AB6E3A /* docsets */ = {
+			isa = PBXGroup;
+			children = (
+				461417D52FB635B000AB6E3A /* TSLAsciiCommands.docset */,
+				461417D62FB635B000AB6E3A /* TSLAsciiCommands.tgz */,
+			);
+			path = docsets;
+			sourceTree = "<group>";
+		};
+		461417E12FB635B000AB6E3A /* img */ = {
+			isa = PBXGroup;
+			children = (
+				461417D82FB635B000AB6E3A /* carat.png */,
+				461417D92FB635B000AB6E3A /* dash.png */,
+				461417DA2FB635B000AB6E3A /* ExternalAccessoryProtocolSupport.png */,
+				461417DB2FB635B000AB6E3A /* Frameworks.png */,
+				461417DC2FB635B000AB6E3A /* gh.png */,
+				461417DD2FB635B000AB6E3A /* logo.png */,
+				461417DE2FB635B000AB6E3A /* spinner.gif */,
+				461417DF2FB635B000AB6E3A /* TSLReaders.png */,
+				461417E02FB635B000AB6E3A /* xcframework.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		461417E72FB635B000AB6E3A /* js */ = {
+			isa = PBXGroup;
+			children = (
+				461417E22FB635B000AB6E3A /* jazzy.js */,
+				461417E32FB635B000AB6E3A /* jazzy.search.js */,
+				461417E42FB635B000AB6E3A /* jquery.min.js */,
+				461417E52FB635B000AB6E3A /* lunr.min.js */,
+				461417E62FB635B000AB6E3A /* typeahead.jquery.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		461418012FB635B000AB6E3A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				461417E82FB635B000AB6E3A /* TSLAntennaParametersProtocol.html */,
+				461417E92FB635B000AB6E3A /* TSLAsciiCommand.html */,
+				461417EA2FB635B000AB6E3A /* TSLAsciiCommanderSupportedDeviceDelegate.html */,
+				461417EB2FB635B000AB6E3A /* TSLAsciiCommandExecuting.html */,
+				461417EC2FB635B000AB6E3A /* TSLAsciiCommandResponder.html */,
+				461417ED2FB635B000AB6E3A /* TSLAsciiCommandResponderDelegate.html */,
+				461417EE2FB635B000AB6E3A /* TSLAsciiCommandResponseNotifying.html */,
+				461417EF2FB635B000AB6E3A /* TSLBarcodeCommandBarcodeReceivedDelegate.html */,
+				461417F02FB635B000AB6E3A /* TSLCommandParametersProtocol.html */,
+				461417F12FB635B000AB6E3A /* TSLDataBankParametersProtocol.html */,
+				461417F22FB635B000AB6E3A /* TSLInventoryCommandTransponderReceivedDelegate.html */,
+				461417F32FB635B000AB6E3A /* TSLParametersProtocol.html */,
+				461417F42FB635B000AB6E3A /* TSLQAlgorithmParametersProtocol.html */,
+				461417F52FB635B000AB6E3A /* TSLQtModeParametersProtocol.html */,
+				461417F62FB635B000AB6E3A /* TSLQueryParametersProtocol.html */,
+				461417F72FB635B000AB6E3A /* TSLReadCommandTransponderReceivedDelegate.html */,
+				461417F82FB635B000AB6E3A /* TSLResponseParametersProtocol.html */,
+				461417F92FB635B000AB6E3A /* TSLSelectControlParametersProtocol.html */,
+				461417FA2FB635B000AB6E3A /* TSLSelectMaskParametersProtocol.html */,
+				461417FB2FB635B000AB6E3A /* TSLSwitchResponderStateReceivedDelegate.html */,
+				461417FC2FB635B000AB6E3A /* TSLTransponderParametersProtocol.html */,
+				461417FD2FB635B000AB6E3A /* TSLTransponderReceivedDelegate.html */,
+				461417FE2FB635B000AB6E3A /* TSLVolumeParametersProtocol.html */,
+				461417FF2FB635B000AB6E3A /* TSLWriteCommandTransponderReceivedDelegate.html */,
+				461418002FB635B000AB6E3A /* TSLWriteSingleCommandTransponderReceivedDelegate.html */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		461418032FB635B000AB6E3A /* TSL_AlertDuration */ = {
+			isa = PBXGroup;
+			children = (
+				461418022FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_AlertDuration;
+			sourceTree = "<group>";
+		};
+		461418052FB635B000AB6E3A /* TSL_AudibleAlertMode */ = {
+			isa = PBXGroup;
+			children = (
+				461418042FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_AudibleAlertMode;
+			sourceTree = "<group>";
+		};
+		461418072FB635B000AB6E3A /* TSL_BlockPermalockMode */ = {
+			isa = PBXGroup;
+			children = (
+				461418062FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_BlockPermalockMode;
+			sourceTree = "<group>";
+		};
+		461418092FB635B000AB6E3A /* TSL_BuzzerTone */ = {
+			isa = PBXGroup;
+			children = (
+				461418082FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_BuzzerTone;
+			sourceTree = "<group>";
+		};
+		4614180B2FB635B000AB6E3A /* TSL_ChargeState */ = {
+			isa = PBXGroup;
+			children = (
+				4614180A2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_ChargeState;
+			sourceTree = "<group>";
+		};
+		4614180D2FB635B000AB6E3A /* TSL_DataBank */ = {
+			isa = PBXGroup;
+			children = (
+				4614180C2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_DataBank;
+			sourceTree = "<group>";
+		};
+		4614180F2FB635B000AB6E3A /* TSL_DeleteConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				4614180E2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_DeleteConfirmation;
+			sourceTree = "<group>";
+		};
+		461418112FB635B000AB6E3A /* TSL_DuplicateRemovalMode */ = {
+			isa = PBXGroup;
+			children = (
+				461418102FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_DuplicateRemovalMode;
+			sourceTree = "<group>";
+		};
+		461418132FB635B000AB6E3A /* TSL_FileIndex */ = {
+			isa = PBXGroup;
+			children = (
+				461418122FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_FileIndex;
+			sourceTree = "<group>";
+		};
+		461418152FB635B000AB6E3A /* TSL_ImpinjBlockWriteMode */ = {
+			isa = PBXGroup;
+			children = (
+				461418142FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_ImpinjBlockWriteMode;
+			sourceTree = "<group>";
+		};
+		461418172FB635B000AB6E3A /* TSL_PopLoqMode */ = {
+			isa = PBXGroup;
+			children = (
+				461418162FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_PopLoqMode;
+			sourceTree = "<group>";
+		};
+		461418192FB635B000AB6E3A /* TSL_QAlgorithm */ = {
+			isa = PBXGroup;
+			children = (
+				461418182FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_QAlgorithm;
+			sourceTree = "<group>";
+		};
+		4614181B2FB635B000AB6E3A /* TSL_QtMode */ = {
+			isa = PBXGroup;
+			children = (
+				4614181A2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_QtMode;
+			sourceTree = "<group>";
+		};
+		4614181D2FB635B000AB6E3A /* TSL_QuerySelect */ = {
+			isa = PBXGroup;
+			children = (
+				4614181C2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_QuerySelect;
+			sourceTree = "<group>";
+		};
+		4614181F2FB635B000AB6E3A /* TSL_QuerySession */ = {
+			isa = PBXGroup;
+			children = (
+				4614181E2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_QuerySession;
+			sourceTree = "<group>";
+		};
+		461418212FB635B000AB6E3A /* TSL_QueryTarget */ = {
+			isa = PBXGroup;
+			children = (
+				461418202FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_QueryTarget;
+			sourceTree = "<group>";
+		};
+		461418232FB635B000AB6E3A /* TSL_ReconnectionMode */ = {
+			isa = PBXGroup;
+			children = (
+				461418222FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_ReconnectionMode;
+			sourceTree = "<group>";
+		};
+		461418252FB635B000AB6E3A /* TSL_SelectAction */ = {
+			isa = PBXGroup;
+			children = (
+				461418242FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_SelectAction;
+			sourceTree = "<group>";
+		};
+		461418272FB635B000AB6E3A /* TSL_SelectTarget */ = {
+			isa = PBXGroup;
+			children = (
+				461418262FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_SelectTarget;
+			sourceTree = "<group>";
+		};
+		461418292FB635B000AB6E3A /* TSL_StartStop */ = {
+			isa = PBXGroup;
+			children = (
+				461418282FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_StartStop;
+			sourceTree = "<group>";
+		};
+		4614182B2FB635B000AB6E3A /* TSL_SwitchAction */ = {
+			isa = PBXGroup;
+			children = (
+				4614182A2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_SwitchAction;
+			sourceTree = "<group>";
+		};
+		4614182D2FB635B000AB6E3A /* TSL_SwitchState */ = {
+			isa = PBXGroup;
+			children = (
+				4614182C2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_SwitchState;
+			sourceTree = "<group>";
+		};
+		4614182F2FB635B000AB6E3A /* TSL_TransponderAccessErrorCode */ = {
+			isa = PBXGroup;
+			children = (
+				4614182E2FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_TransponderAccessErrorCode;
+			sourceTree = "<group>";
+		};
+		461418312FB635B000AB6E3A /* TSL_TransponderBackscatterErrorCode */ = {
+			isa = PBXGroup;
+			children = (
+				461418302FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_TransponderBackscatterErrorCode;
+			sourceTree = "<group>";
+		};
+		461418332FB635B000AB6E3A /* TSL_TriState */ = {
+			isa = PBXGroup;
+			children = (
+				461418322FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_TriState;
+			sourceTree = "<group>";
+		};
+		461418352FB635B000AB6E3A /* TSL_Volume */ = {
+			isa = PBXGroup;
+			children = (
+				461418342FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_Volume;
+			sourceTree = "<group>";
+		};
+		461418372FB635B000AB6E3A /* TSL_WriteMode */ = {
+			isa = PBXGroup;
+			children = (
+				461418362FB635B000AB6E3A /* .html */,
+			);
+			path = TSL_WriteMode;
+			sourceTree = "<group>";
+		};
+		461418532FB635B000AB6E3A /* Type Definitions */ = {
+			isa = PBXGroup;
+			children = (
+				461418032FB635B000AB6E3A /* TSL_AlertDuration */,
+				461418052FB635B000AB6E3A /* TSL_AudibleAlertMode */,
+				461418072FB635B000AB6E3A /* TSL_BlockPermalockMode */,
+				461418092FB635B000AB6E3A /* TSL_BuzzerTone */,
+				4614180B2FB635B000AB6E3A /* TSL_ChargeState */,
+				4614180D2FB635B000AB6E3A /* TSL_DataBank */,
+				4614180F2FB635B000AB6E3A /* TSL_DeleteConfirmation */,
+				461418112FB635B000AB6E3A /* TSL_DuplicateRemovalMode */,
+				461418132FB635B000AB6E3A /* TSL_FileIndex */,
+				461418152FB635B000AB6E3A /* TSL_ImpinjBlockWriteMode */,
+				461418172FB635B000AB6E3A /* TSL_PopLoqMode */,
+				461418192FB635B000AB6E3A /* TSL_QAlgorithm */,
+				4614181B2FB635B000AB6E3A /* TSL_QtMode */,
+				4614181D2FB635B000AB6E3A /* TSL_QuerySelect */,
+				4614181F2FB635B000AB6E3A /* TSL_QuerySession */,
+				461418212FB635B000AB6E3A /* TSL_QueryTarget */,
+				461418232FB635B000AB6E3A /* TSL_ReconnectionMode */,
+				461418252FB635B000AB6E3A /* TSL_SelectAction */,
+				461418272FB635B000AB6E3A /* TSL_SelectTarget */,
+				461418292FB635B000AB6E3A /* TSL_StartStop */,
+				4614182B2FB635B000AB6E3A /* TSL_SwitchAction */,
+				4614182D2FB635B000AB6E3A /* TSL_SwitchState */,
+				4614182F2FB635B000AB6E3A /* TSL_TransponderAccessErrorCode */,
+				461418312FB635B000AB6E3A /* TSL_TransponderBackscatterErrorCode */,
+				461418332FB635B000AB6E3A /* TSL_TriState */,
+				461418352FB635B000AB6E3A /* TSL_Volume */,
+				461418372FB635B000AB6E3A /* TSL_WriteMode */,
+				461418382FB635B000AB6E3A /* TSL_AlertDuration.html */,
+				461418392FB635B000AB6E3A /* TSL_AudibleAlertMode.html */,
+				4614183A2FB635B000AB6E3A /* TSL_BlockPermalockMode.html */,
+				4614183B2FB635B000AB6E3A /* TSL_BuzzerTone.html */,
+				4614183C2FB635B000AB6E3A /* TSL_ChargeState.html */,
+				4614183D2FB635B000AB6E3A /* TSL_DataBank.html */,
+				4614183E2FB635B000AB6E3A /* TSL_DeleteConfirmation.html */,
+				4614183F2FB635B000AB6E3A /* TSL_DuplicateRemovalMode.html */,
+				461418402FB635B000AB6E3A /* TSL_FileIndex.html */,
+				461418412FB635B000AB6E3A /* TSL_ImpinjBlockWriteMode.html */,
+				461418422FB635B000AB6E3A /* TSL_PopLoqMode.html */,
+				461418432FB635B000AB6E3A /* TSL_QAlgorithm.html */,
+				461418442FB635B000AB6E3A /* TSL_QtMode.html */,
+				461418452FB635B000AB6E3A /* TSL_QuerySelect.html */,
+				461418462FB635B000AB6E3A /* TSL_QuerySession.html */,
+				461418472FB635B000AB6E3A /* TSL_QueryTarget.html */,
+				461418482FB635B000AB6E3A /* TSL_ReconnectionMode.html */,
+				461418492FB635B000AB6E3A /* TSL_SelectAction.html */,
+				4614184A2FB635B000AB6E3A /* TSL_SelectTarget.html */,
+				4614184B2FB635B000AB6E3A /* TSL_StartStop.html */,
+				4614184C2FB635B000AB6E3A /* TSL_SwitchAction.html */,
+				4614184D2FB635B000AB6E3A /* TSL_SwitchState.html */,
+				4614184E2FB635B000AB6E3A /* TSL_TransponderAccessErrorCode.html */,
+				4614184F2FB635B000AB6E3A /* TSL_TransponderBackscatterErrorCode.html */,
+				461418502FB635B000AB6E3A /* TSL_TriState.html */,
+				461418512FB635B000AB6E3A /* TSL_Volume.html */,
+				461418522FB635B000AB6E3A /* TSL_WriteMode.html */,
+			);
+			path = "Type Definitions";
+			sourceTree = "<group>";
+		};
+		461418592FB635B000AB6E3A /* TSL ASCII 2 API Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				461417D12FB635B000AB6E3A /* Classes */,
+				461417D42FB635B000AB6E3A /* css */,
+				461417D72FB635B000AB6E3A /* docsets */,
+				461417E12FB635B000AB6E3A /* img */,
+				461417E72FB635B000AB6E3A /* js */,
+				461418012FB635B000AB6E3A /* Protocols */,
+				461418532FB635B000AB6E3A /* Type Definitions */,
+				461418542FB635B000AB6E3A /* Classes.html */,
+				461418552FB635B000AB6E3A /* Constants.html */,
+				461418562FB635B000AB6E3A /* index.html */,
+				461418572FB635B000AB6E3A /* Protocols.html */,
+				461418582FB635B000AB6E3A /* Type Definitions.html */,
+			);
+			path = "TSL ASCII 2 API Documentation";
+			sourceTree = "<group>";
+		};
+		461418812FB635B000AB6E3A /* TSL UHF ASCII 2.0 SDK v1.6.1 */ = {
+			isa = PBXGroup;
+			children = (
+				461418592FB635B000AB6E3A /* TSL ASCII 2 API Documentation */,
+				461418782FB635B000AB6E3A /* .gitignore */,
+				461418792FB635B000AB6E3A /* App Store Submission Process.pdf */,
+				4614187A2FB635B000AB6E3A /* Framework Version History.txt */,
+				4614187C2FB635B000AB6E3A /* Readers.xcassets */,
+				4614187D2FB635B000AB6E3A /* TSLAsciiCommands.framework */,
+				4614187E2FB635B000AB6E3A /* TSLAsciiCommands.xcframework */,
+				4614187F2FB635B000AB6E3A /* UHF_ASCII_2.0_Mobile_SDK_User_Guide_iOS.pdf */,
+				461418802FB635B000AB6E3A /* UHF_ASCII_2.0_SDK_Licence_Agreement_iOS.pdf */,
+			);
+			name = "TSL UHF ASCII 2.0 SDK v1.6.1";
+			path = "../TSL UHF ASCII 2.0 SDK v1.6.1";
+			sourceTree = SOURCE_ROOT;
+		};
 		465F602D2FB3889100D492D1 = {
 			isa = PBXGroup;
 			children = (
+				461418812FB635B000AB6E3A /* TSL UHF ASCII 2.0 SDK v1.6.1 */,
 				46E494082FB3EFB50054A2E1 /* TSLAsciiCommands.xcframework */,
-				46E4940B2FB3F1FF0054A2E1 /* TSL Headers */,
 				465F60382FB3889100D492D1 /* cardex */,
 				465F60372FB3889100D492D1 /* Products */,
 				467892AF2FB609B400672B80 /* cardex.entitlements */,
@@ -160,92 +711,6 @@
 				465F60362FB3889100D492D1 /* cardex.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		46E4940B2FB3F1FF0054A2E1 /* TSL Headers */ = {
-			isa = PBXGroup;
-			children = (
-				46E4940C2FB3F2270054A2E1 /* TSLAbortCommand.h */,
-				46E4940D2FB3F2270054A2E1 /* TSLAlertCommand.h */,
-				46E4940E2FB3F2270054A2E1 /* TSLAllParameters.h */,
-				46E4940F2FB3F2270054A2E1 /* TSLAntennaParameters.h */,
-				46E494102FB3F2270054A2E1 /* TSLAsciiCommand.h */,
-				46E494112FB3F2270054A2E1 /* TSLAsciiCommandBase.h */,
-				46E494122FB3F2270054A2E1 /* TSLAsciiCommander.h */,
-				46E494132FB3F2270054A2E1 /* TSLAsciiCommandExecuting.h */,
-				46E494142FB3F2270054A2E1 /* TSLAsciiCommandExecutorBase.h */,
-				46E494152FB3F2270054A2E1 /* TSLAsciiCommandLibraryResponderBase.h */,
-				46E494162FB3F2270054A2E1 /* TSLAsciiCommandResponder.h */,
-				46E494172FB3F2270054A2E1 /* TSLAsciiCommandResponderBase.h */,
-				46E494182FB3F2270054A2E1 /* TSLAsciiCommandResponderDelegate.h */,
-				46E494192FB3F2270054A2E1 /* TSLAsciiCommandResponseNotifying.h */,
-				46E4941A2FB3F2270054A2E1 /* TSLAsciiCommands.h */,
-				46E4941B2FB3F2270054A2E1 /* TSLAsciiSelfResponderCommandBase.h */,
-				46E4941C2FB3F2270054A2E1 /* TSLAutorunCommand.h */,
-				46E4941D2FB3F2270054A2E1 /* TSLAvailabilityMacros.h */,
-				46E4941E2FB3F2270054A2E1 /* TSLBarcodeCommand.h */,
-				46E4941F2FB3F2270054A2E1 /* TSLBatteryHealthData.h */,
-				46E494202FB3F2270054A2E1 /* TSLBatteryServiceData.h */,
-				46E494212FB3F2270054A2E1 /* TSLBatteryStatusCommand.h */,
-				46E494222FB3F2270054A2E1 /* TSLBinaryEncoding.h */,
-				46E494232FB3F2270054A2E1 /* TSLBlockPermalockTransponderCommand.h */,
-				46E494242FB3F2270054A2E1 /* TSLCommandParameters.h */,
-				46E494252FB3F2270054A2E1 /* TSLConstants.h */,
-				46E494262FB3F2270054A2E1 /* TSLDataBankParameters.h */,
-				46E494272FB3F2270054A2E1 /* TSLDateCommand.h */,
-				46E494282FB3F2270054A2E1 /* TSLDateTimeCommand.h */,
-				46E494292FB3F2270054A2E1 /* TSLDeleteConfirmation.h */,
-				46E4942A2FB3F2270054A2E1 /* TSLDeviceFileLineReceived.h */,
-				46E4942B2FB3F2270054A2E1 /* TSLEchoCommand.h */,
-				46E4942C2FB3F2270054A2E1 /* TSLExceptions.h */,
-				46E4942D2FB3F2270054A2E1 /* TSLExecuteAutorunFileCommand.h */,
-				46E4942E2FB3F2270054A2E1 /* TSLFactoryDefaultsCommand.h */,
-				46E4942F2FB3F2270054A2E1 /* TSLFindTagCommand.h */,
-				46E494302FB3F2270054A2E1 /* TSLInventoryCommand.h */,
-				46E494312FB3F2270054A2E1 /* TSLKillCommand.h */,
-				46E494322FB3F2270054A2E1 /* TSLLibraryConfiguration.h */,
-				46E494332FB3F2270054A2E1 /* TSLLicenceKeyCommand.h */,
-				46E494342FB3F2270054A2E1 /* TSLLockCommand.h */,
-				46E494352FB3F2270054A2E1 /* TSLLoggerResponder.h */,
-				46E494362FB3F2270054A2E1 /* TSLParametersProtocol.h */,
-				46E494372FB3F2270054A2E1 /* TSLQAlgorithmParameters.h */,
-				46E494382FB3F2270054A2E1 /* TSLQtModeParameters.h */,
-				46E494392FB3F2270054A2E1 /* TSLQueryParameters.h */,
-				46E4943A2FB3F2270054A2E1 /* TSLReadAutorunFileCommand.h */,
-				46E4943B2FB3F2270054A2E1 /* TSLReadLogFileCommand.h */,
-				46E4943C2FB3F2270054A2E1 /* TSLReadTransponderCommand.h */,
-				46E4943D2FB3F2270054A2E1 /* TSLResponseParameters.h */,
-				46E4943E2FB3F2270054A2E1 /* TSLSelectControlParameters.h */,
-				46E4943F2FB3F2270054A2E1 /* TSLSelectMaskParameters.h */,
-				46E494402FB3F2270054A2E1 /* TSLShowRegionCommand.h */,
-				46E494412FB3F2270054A2E1 /* TSLSignalStrengthResponder.h */,
-				46E494422FB3F2270054A2E1 /* TSLSleepCommand.h */,
-				46E494432FB3F2270054A2E1 /* TSLSleepTimeoutCommand.h */,
-				46E494442FB3F2270054A2E1 /* TSLSwitchActionCommand.h */,
-				46E494452FB3F2270054A2E1 /* TSLSwitchDoublePressCommand.h */,
-				46E494462FB3F2270054A2E1 /* TSLSwitchDoublePressUserActionCommand.h */,
-				46E494472FB3F2270054A2E1 /* TSLSwitchResponder.h */,
-				46E494482FB3F2270054A2E1 /* TSLSwitchSinglePressCommand.h */,
-				46E494492FB3F2270054A2E1 /* TSLSwitchSinglePressUserActionCommand.h */,
-				46E4944A2FB3F2270054A2E1 /* TSLSwitchStateCommand.h */,
-				46E4944B2FB3F2270054A2E1 /* TSLSynchronousDispatchResponder.h */,
-				46E4944C2FB3F2270054A2E1 /* TSLTimeCommand.h */,
-				46E4944D2FB3F2270054A2E1 /* TSLTransponderAccessErrorCode.h */,
-				46E4944E2FB3F2270054A2E1 /* TSLTransponderBackscatterErrorCode.h */,
-				46E4944F2FB3F2270054A2E1 /* TSLTransponderData.h */,
-				46E494502FB3F2270054A2E1 /* TSLTransponderMemoryCommandBase.h */,
-				46E494512FB3F2270054A2E1 /* TSLTransponderParameters.h */,
-				46E494522FB3F2270054A2E1 /* TSLTransponderReceivedDelegate.h */,
-				46E494532FB3F2270054A2E1 /* TSLTransponderResponder.h */,
-				46E494542FB3F2270054A2E1 /* TSLTransponderSelectCommand.h */,
-				46E494552FB3F2270054A2E1 /* TSLTriState.h */,
-				46E494562FB3F2270054A2E1 /* TSLVersionInformationCommand.h */,
-				46E494572FB3F2270054A2E1 /* TSLVolumeParameters.h */,
-				46E494582FB3F2270054A2E1 /* TSLWriteAutorunFileCommand.h */,
-				46E494592FB3F2270054A2E1 /* TSLWriteSingleTransponderCommand.h */,
-				46E4945A2FB3F2270054A2E1 /* TSLWriteTransponderCommand.h */,
-			);
-			path = "TSL Headers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
