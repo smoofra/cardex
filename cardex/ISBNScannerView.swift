@@ -133,7 +133,9 @@ private final class ScannerViewController: UIViewController,
         previewLayer = layer
         previewLayer?.frame = view.bounds
 
-        session.startRunning()
+        ocrQueue.async{
+            self.session.startRunning()
+        }
     }
 
     func stopSession() {
