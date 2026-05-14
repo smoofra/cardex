@@ -13,6 +13,10 @@ struct ContentView: View {
     @State private var scannedISBN: String? = nil
     @State private var bookTitle: String? = nil
     @State private var isFetchingTitle = false
+    @State private var showingDOIScanner = false
+    @State private var scannedDOI: String? = nil
+    @State private var doiTitle: String? = nil
+    @State private var isFetchingDOITitle = false
     @State private var scannedEPC: String? = nil
     @State private var saveError: String? = nil
 
@@ -22,10 +26,10 @@ struct ContentView: View {
                 Image(systemName: "book")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
-                Text("Scan an ISBN")
+                Text("Scan an ISBN or DOI")
                     .font(.title2)
 
-                if scannedISBN != nil || scannedEPC != nil {
+                if scannedISBN != nil || scannedDOI != nil || scannedEPC != nil {
                     VStack(alignment: .leading, spacing: 6) {
                         if let isbn = scannedISBN {
                             Text("ISBN: \(isbn)")
@@ -34,6 +38,19 @@ struct ContentView: View {
                                     .scaleEffect(0.7)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             } else if let title = bookTitle {
+                                Text(title)
+                                    .font(.body)
+                                    .foregroundStyle(.secondary)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
+                        if let doi = scannedDOI {
+                            Text("DOI: \(doi)")
+                            if isFetchingDOITitle {
+                                ProgressView()
+                                    .scaleEffect(0.7)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            } else if let title = doiTitle {
                                 Text(title)
                                     .font(.body)
                                     .foregroundStyle(.secondary)
@@ -61,6 +78,17 @@ struct ContentView: View {
                 }
                 .padding(.top, 12)
 
+                Button {
+                    showingDOIScanner = true
+                } label: {
+                    Label("Scan DOI", systemImage: "doc.text.viewfinder")
+                        .font(.headline)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .background(.tint, in: Capsule())
+                        .foregroundStyle(.white)
+                }
+
                 NavigationLink(destination: RFIDInventoryView(onConfirm: { epc in
                     scannedEPC = epc
                 }, service: rfidService)) {
@@ -72,10 +100,10 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                 }
 
-                if let isbn = scannedISBN, let epc = scannedEPC {
+                if let identifier = scannedISBN ?? scannedDOI, let epc = scannedEPC {
                     Button {
                         rfidService.clearTags()
-                        save(isbn: isbn, epc: epc)
+                        save(identifier: identifier, epc: epc)
                     } label: {
                         Label("Save", systemImage: "square.and.arrow.down")
                             .font(.headline)
@@ -98,11 +126,28 @@ struct ContentView: View {
                 NavigationStack {
                     ISBNScannerView { isbn in
                         scannedISBN = isbn
+                        scannedDOI = nil
+                        doiTitle = nil
                         bookTitle = nil
                         isFetchingTitle = true
                         Task {
-                            bookTitle = await lookupTitle(isbn: isbn)
+                            bookTitle = await lookupISBNTitle(isbn: isbn)
                             isFetchingTitle = false
+                        }
+                    }
+                }
+            }
+            .sheet(isPresented: $showingDOIScanner) {
+                NavigationStack {
+                    DOIScannerView { doi in
+                        scannedDOI = doi
+                        scannedISBN = nil
+                        bookTitle = nil
+                        doiTitle = nil
+                        isFetchingDOITitle = true
+                        Task {
+                            doiTitle = await lookupDOITitle(doi: doi)
+                            isFetchingDOITitle = false
                         }
                     }
                 }
@@ -110,15 +155,61 @@ struct ContentView: View {
         }
     }
 
-    private func lookupTitle(isbn: String) async -> String? {
+    private func lookupISBNTitle(isbn: String) async -> String? {
         guard let url = URL(string: "https://openlibrary.org/isbn/\(isbn).json") else { return nil }
         guard let (data, _) = try? await URLSession.shared.data(from: url) else { return nil }
         struct Book: Decodable { let title: String }
         return (try? JSONDecoder().decode(Book.self, from: data))?.title
     }
 
-    private func save(isbn: String, epc: String) {
-        let line = "\"\(isbn)\",\"\(epc)\"\n"
+    private func lookupDOITitle(doi: String) async -> String? {
+        let prefix = doi.components(separatedBy: "/").first ?? ""
+        guard let raURL = URL(string: "https://doi.org/ra/\(prefix)"),
+              let (raData, _) = try? await URLSession.shared.data(from: raURL),
+              let raArray = try? JSONDecoder().decode([[String: String]].self, from: raData),
+              let ra = raArray.first?["RA"]
+        else { return nil }
+
+        switch ra {
+        case "Crossref":
+            return await lookupCrossrefTitle(doi: doi)
+        case "DataCite":
+            return await lookupDataCiteTitle(doi: doi)
+        default:
+            return nil
+        }
+    }
+
+    private func lookupCrossrefTitle(doi: String) async -> String? {
+        let encoded = doi.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? doi
+        guard let url = URL(string: "https://api.crossref.org/works/\(encoded)") else { return nil }
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else { return nil }
+        struct Response: Decodable {
+            struct Message: Decodable { let title: [String] }
+            let message: Message
+        }
+        return (try? JSONDecoder().decode(Response.self, from: data))?.message.title.first
+    }
+
+    private func lookupDataCiteTitle(doi: String) async -> String? {
+        let encoded = doi.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? doi
+        guard let url = URL(string: "https://api.datacite.org/dois/\(encoded)") else { return nil }
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else { return nil }
+        struct Response: Decodable {
+            struct Data: Decodable {
+                struct Attributes: Decodable {
+                    struct Title: Decodable { let title: String }
+                    let titles: [Title]
+                }
+                let attributes: Attributes
+            }
+            let data: Data
+        }
+        return (try? JSONDecoder().decode(Response.self, from: data))?.data.attributes.titles.first?.title
+    }
+
+    private func save(identifier: String, epc: String) {
+        let line = "\"\(identifier)\",\"\(epc)\"\n"
         let fileName = "cardex.csv"
 
         let dir: URL
@@ -138,11 +229,13 @@ struct ContentView: View {
                 handle.write(Data(line.utf8))
                 try handle.close()
             } else {
-                let header = "\"isbn\",\"epc\"\n"
+                let header = "\"identifier\",\"epc\"\n"
                 try (header + line).write(to: fileURL, atomically: true, encoding: .utf8)
             }
             scannedISBN = nil
             bookTitle = nil
+            scannedDOI = nil
+            doiTitle = nil
             scannedEPC = nil
             saveError = nil
         } catch {
