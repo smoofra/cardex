@@ -11,6 +11,8 @@ struct ContentView: View {
     @StateObject private var rfidService = RFIDReaderService()
     @State private var showingScanner = false
     @State private var scannedISBN: String? = nil
+    @State private var bookTitle: String? = nil
+    @State private var isFetchingTitle = false
     @State private var scannedEPC: String? = nil
     @State private var saveError: String? = nil
 
@@ -27,6 +29,16 @@ struct ContentView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         if let isbn = scannedISBN {
                             Text("ISBN: \(isbn)")
+                            if isFetchingTitle {
+                                ProgressView()
+                                    .scaleEffect(0.7)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            } else if let title = bookTitle {
+                                Text(title)
+                                    .font(.body)
+                                    .foregroundStyle(.secondary)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
                         }
                         if let epc = scannedEPC {
                             Text("RFID: \(epc)")
@@ -84,12 +96,25 @@ struct ContentView: View {
             .navigationTitle("cardex")
             .sheet(isPresented: $showingScanner) {
                 NavigationStack {
-                    ISBNScannerView { code in
-                        scannedISBN = code
+                    ISBNScannerView { isbn in
+                        scannedISBN = isbn
+                        bookTitle = nil
+                        isFetchingTitle = true
+                        Task {
+                            bookTitle = await lookupTitle(isbn: isbn)
+                            isFetchingTitle = false
+                        }
                     }
                 }
             }
         }
+    }
+
+    private func lookupTitle(isbn: String) async -> String? {
+        guard let url = URL(string: "https://openlibrary.org/isbn/\(isbn).json") else { return nil }
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else { return nil }
+        struct Book: Decodable { let title: String }
+        return (try? JSONDecoder().decode(Book.self, from: data))?.title
     }
 
     private func save(isbn: String, epc: String) {
@@ -117,6 +142,7 @@ struct ContentView: View {
                 try (header + line).write(to: fileURL, atomically: true, encoding: .utf8)
             }
             scannedISBN = nil
+            bookTitle = nil
             scannedEPC = nil
             saveError = nil
         } catch {
