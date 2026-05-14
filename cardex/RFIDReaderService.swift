@@ -24,6 +24,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     @Published var tags: [RFIDTag] = []
     @Published var lastErrorMessage: String?
 
+    private let scanQueue = DispatchQueue(label: "org.elder-gods.cardex.scan", qos: .default)
     private var scanTimeoutWorkItem: DispatchWorkItem? = nil
     private var isShowingAccessoryPicker = false
     private var pendingPickerRequest = false
@@ -227,7 +228,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
                 }
             }
         }
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+        scanQueue.async { [weak self] in
             guard let self = self else { return }
             self.commander.execute(inv)
 
@@ -238,6 +239,8 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
                 if !inv.isSuccessful {
                     print("failed!")
                     self.lastErrorMessage = inv.errorCode.map { "Reader error ER:\($0)" } ?? "Reader error"
+                } else {
+                    print("done.")
                 }
             }
         }

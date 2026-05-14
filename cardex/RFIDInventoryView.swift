@@ -77,7 +77,7 @@ struct RFIDInventoryView: View {
         }
         .onDisappear {
             service.stopScan()
-            service.disconnect()
+            //service.disconnect()
         }
     }
 }
