@@ -3,7 +3,7 @@ import Combine
 
 struct RFIDInventoryView: View {
     let onConfirm: (String) -> Void
-    @StateObject private var service = RFIDReaderService()
+    @ObservedObject var service: RFIDReaderService
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -83,5 +83,5 @@ struct RFIDInventoryView: View {
 }
 
 #Preview {
-    RFIDInventoryView(onConfirm: { _ in })
+    RFIDInventoryView(onConfirm: { _ in }, service: RFIDReaderService())
 }

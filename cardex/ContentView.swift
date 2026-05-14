@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var rfidService = RFIDReaderService()
     @State private var showingScanner = false
     @State private var scannedISBN: String? = nil
     @State private var scannedEPC: String? = nil
@@ -50,7 +51,7 @@ struct ContentView: View {
 
                 NavigationLink(destination: RFIDInventoryView(onConfirm: { epc in
                     scannedEPC = epc
-                })) {
+                }, service: rfidService)) {
                     Label("Scan RFID", systemImage: "antenna.radiowaves.left.and.right")
                         .font(.headline)
                         .padding(.horizontal, 20)
