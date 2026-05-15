@@ -67,6 +67,13 @@ struct RFIDInventoryView: View {
                                 .foregroundColor(.secondary)
                                 .font(.caption)
                         }
+                        Button {
+                            UIPasteboard.general.string = tag.epc
+                        } label: {
+                            Image(systemName: "doc.on.doc")
+                        }
+                        .buttonStyle(.borderless)
+                        .foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 4)
                 }
