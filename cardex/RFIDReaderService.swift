@@ -9,6 +9,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     struct RFIDTag: Hashable {
         let epc: String
         let rssi: Int?
+        var count: Int = 1
     }
 
     private let commander: TSLAsciiCommander
@@ -22,6 +23,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     @Published var minPower: Int = 4
     @Published var maxPower: Int = 29
     @Published var tags: [RFIDTag] = []
+    @Published var lastScanEPCs: Set<String> = []
     @Published var lastErrorMessage: String?
 
     private let scanQueue = DispatchQueue(label: "org.elder-gods.cardex.scan", qos: .default)
@@ -180,6 +182,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     func clearTags() {
         DispatchQueue.main.async {
             self.tags.removeAll()
+            self.lastScanEPCs = []
         }
     }
 
@@ -207,17 +210,19 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         inv.duplicateRemoval = TSL_DuplicateRemovalMode_On
         inv.outputPower = Int32(power)
 
+        var currentScanEPCs = Set<String>()
+
         inv.transponderDataReceivedBlock = { [weak self] transponder, moreAvailable in
             guard let self = self else { return }
 
             DispatchQueue.main.async {
                 if let epc = transponder.epc {
                     let rssi = transponder.rssi?.intValue
-                    let newTag = RFIDTag(epc: epc, rssi: rssi)
+                    currentScanEPCs.insert(epc)
                     if let index = self.tags.firstIndex(where: { $0.epc == epc }) {
-                        self.tags[index] = newTag
+                        self.tags[index] = RFIDTag(epc: epc, rssi: rssi, count: self.tags[index].count + 1)
                     } else {
-                        self.tags.append(newTag)
+                        self.tags.append(RFIDTag(epc: epc, rssi: rssi))
                     }
                 }
 
@@ -225,6 +230,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
                     self.scanTimeoutWorkItem?.cancel()
                     self.scanTimeoutWorkItem = nil
                     self.isScanning = false
+                    self.lastScanEPCs = currentScanEPCs
                 }
             }
         }

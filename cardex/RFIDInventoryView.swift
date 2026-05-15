@@ -41,23 +41,23 @@ struct RFIDInventoryView: View {
                         .tint(.red)
                     } else {
                         Button("Scan Once") {
-                            service.clearTags()
                             service.scanOnce()
                         }
                         .buttonStyle(.borderedProminent)
                         .disabled(!service.isConnected)
                     }
 
-                    if service.tags.count == 1 {
+                    if service.lastScanEPCs.count == 1, let epc = service.lastScanEPCs.first {
                         Button("OK") {
-                            onConfirm(service.tags[0].epc)
+                            onConfirm(epc)
+                            service.clearTags()
                             dismiss()
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.green)
                     }
                 }
-                List(service.tags, id: \.epc) { tag in
+                List(service.tags.sorted { $0.count > $1.count }, id: \.epc) { tag in
                     HStack {
                         Text(tag.epc)
                             .font(.body)
@@ -67,6 +67,10 @@ struct RFIDInventoryView: View {
                                 .foregroundColor(.secondary)
                                 .font(.caption)
                         }
+                        Text("×\(tag.count)")
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                            .monospacedDigit()
                         Button {
                             UIPasteboard.general.string = tag.epc
                         } label: {
@@ -75,6 +79,7 @@ struct RFIDInventoryView: View {
                         .buttonStyle(.borderless)
                         .foregroundStyle(.secondary)
                     }
+                    .opacity(service.lastScanEPCs.isEmpty || service.lastScanEPCs.contains(tag.epc) ? 1.0 : 0.35)
                     .padding(.vertical, 4)
                 }
                 .listStyle(.plain)
