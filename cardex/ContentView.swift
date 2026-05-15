@@ -205,6 +205,13 @@ struct ContentView: View {
         return (try? JSONDecoder().decode(Response.self, from: data))?.data.attributes.titles.first?.title
     }
 
+    private func csvField(_ s: String) -> String {
+        if s.contains(",") || s.contains("\"") || s.contains("\n") || s.contains("\r") {
+            return "\"" + s.replacingOccurrences(of: "\"", with: "\"\"") + "\""
+        }
+        return s
+    }
+
     private func save(isbn: String, doi: String, epc: String, title: String) {
         let fileName = "cardex.csv"
 
@@ -216,7 +223,7 @@ struct ContentView: View {
         }
 
         let fileURL = dir.appendingPathComponent(fileName)
-        let line = "\(isbn),\(doi),\(epc),\(title)\n"
+        let line = "\(csvField(isbn)),\(csvField(doi)),\(csvField(epc)),\(csvField(title))\n"
         do {
             try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
             if FileManager.default.fileExists(atPath: fileURL.path) {
