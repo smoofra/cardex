@@ -11,11 +11,10 @@ struct ContentView: View {
     @StateObject private var rfidService = RFIDReaderService()
     @State private var showingScanner = false
     @State private var scannedISBN: String? = nil
-    @State private var bookTitle: String? = nil
+    @State private var title: String? = nil
     @State private var isFetchingTitle = false
     @State private var showingDOIScanner = false
     @State private var scannedDOI: String? = nil
-    @State private var doiTitle: String? = nil
     @State private var isFetchingDOITitle = false
     @State private var scannedEPC: String? = nil
     @State private var saveError: String? = nil
@@ -37,7 +36,7 @@ struct ContentView: View {
                                 ProgressView()
                                     .scaleEffect(0.7)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                            } else if let title = bookTitle {
+                            } else if let title = title {
                                 Text(title)
                                     .font(.body)
                                     .foregroundStyle(.secondary)
@@ -50,7 +49,7 @@ struct ContentView: View {
                                 ProgressView()
                                     .scaleEffect(0.7)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                            } else if let title = doiTitle {
+                            } else if let title = title {
                                 Text(title)
                                     .font(.body)
                                     .foregroundStyle(.secondary)
@@ -100,10 +99,10 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                 }
 
-                if let identifier = scannedISBN ?? scannedDOI, let epc = scannedEPC {
+                if scannedISBN != nil || scannedDOI != nil, let epc = scannedEPC {
                     Button {
                         rfidService.clearTags()
-                        save(identifier: identifier, epc: epc)
+                        save(isbn: scannedISBN ?? "", doi: scannedDOI ?? "", epc: epc, title: title ?? "")
                     } label: {
                         Label("Save", systemImage: "square.and.arrow.down")
                             .font(.headline)
@@ -127,11 +126,10 @@ struct ContentView: View {
                     ISBNScannerView { isbn in
                         scannedISBN = isbn
                         scannedDOI = nil
-                        doiTitle = nil
-                        bookTitle = nil
+                        title = nil
                         isFetchingTitle = true
                         Task {
-                            bookTitle = await lookupISBNTitle(isbn: isbn)
+                            title = await lookupISBNTitle(isbn: isbn)
                             isFetchingTitle = false
                         }
                     }
@@ -142,11 +140,10 @@ struct ContentView: View {
                     DOIScannerView { doi in
                         scannedDOI = doi
                         scannedISBN = nil
-                        bookTitle = nil
-                        doiTitle = nil
+                        title = nil
                         isFetchingDOITitle = true
                         Task {
-                            doiTitle = await lookupDOITitle(doi: doi)
+                            title = await lookupDOITitle(doi: doi)
                             isFetchingDOITitle = false
                         }
                     }
@@ -208,8 +205,7 @@ struct ContentView: View {
         return (try? JSONDecoder().decode(Response.self, from: data))?.data.attributes.titles.first?.title
     }
 
-    private func save(identifier: String, epc: String) {
-        let line = "\"\(identifier)\",\"\(epc)\"\n"
+    private func save(isbn: String, doi: String, epc: String, title: String) {
         let fileName = "cardex.csv"
 
         let dir: URL
@@ -220,7 +216,7 @@ struct ContentView: View {
         }
 
         let fileURL = dir.appendingPathComponent(fileName)
-
+        let line = "\(isbn),\(doi),\(epc),\(title)\n"
         do {
             try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
             if FileManager.default.fileExists(atPath: fileURL.path) {
@@ -229,13 +225,12 @@ struct ContentView: View {
                 handle.write(Data(line.utf8))
                 try handle.close()
             } else {
-                let header = "\"identifier\",\"epc\"\n"
+                let header = "isbn,doi,epc,title\n"
                 try (header + line).write(to: fileURL, atomically: true, encoding: .utf8)
             }
             scannedISBN = nil
-            bookTitle = nil
+            self.title = nil
             scannedDOI = nil
-            doiTitle = nil
             scannedEPC = nil
             saveError = nil
         } catch {
