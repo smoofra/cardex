@@ -163,7 +163,7 @@ private final class DOIScannerViewController: UIViewController,
     // MARK: - Helpers
 
     private func findDOI(in strings: [String]) -> String? {
-        let doiPattern = try? NSRegularExpression(pattern: "(?i)doi:\\s*(10\\.\\d{4,}/\\S+)")
+        let doiPattern = try? NSRegularExpression(pattern: "(?i)(?:doi:\\s*)?(10\\.\\d{4,}/\\S+)")
         let arxivPattern = try? NSRegularExpression(pattern: "(?i)arxiv:\\s*(\\d{4}\\.\\d{4,5}(?:v\\d+)?|[a-z.-]+/\\d{7}(?:v\\d+)?)")
         for text in strings {
             let nsText = text as NSString
