@@ -223,7 +223,7 @@ struct ContentView: View {
         }
 
         let fileURL = dir.appendingPathComponent(fileName)
-        let line = "\(csvField(isbn)),\(csvField(doi)),\(csvField(epc)),\(csvField(title))\n"
+        let line = "\(csvField(isbn)),\(csvField(doi)),\(csvField(epc)),\(csvField(title))\r\n"
         do {
             try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
             if FileManager.default.fileExists(atPath: fileURL.path) {
@@ -232,7 +232,7 @@ struct ContentView: View {
                 handle.write(Data(line.utf8))
                 try handle.close()
             } else {
-                let header = "isbn,doi,epc,title\n"
+                let header = "isbn,doi,epc,title\r\n"
                 try (header + line).write(to: fileURL, atomically: true, encoding: .utf8)
             }
             scannedISBN = nil
