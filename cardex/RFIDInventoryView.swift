@@ -10,7 +10,7 @@ struct RFIDInventoryView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 HStack {
-                    if service.isConnected {
+                    if service.connection != nil {
                         Button("Disconnect") {
                             service.disconnect()
                         }
@@ -23,14 +23,17 @@ struct RFIDInventoryView: View {
                         .buttonStyle(.borderedProminent)
                     }
                 }
-                VStack(alignment: .leading) {
-                    Text("Power: \(Int(service.power))")
-                    let powerBinding = Binding<Double>(
-                        get: { Double(service.power) },
-                        set: { service.power = Int($0.rounded()) }
-                    )
-                    Slider(value: powerBinding, in: Double(service.minPower)...Double(service.maxPower), step: 1)
-                        .disabled(!service.isConnected)
+                if let connection = service.connection {
+                    VStack(alignment: .leading) {
+                        Text("Power: \(connection.power)")
+                        let powerBinding = Binding<Double>(
+                            get: { Double(service.connection?.power ?? connection.minPower) },
+                            set: {
+                                service.connection?.power = Int($0.rounded())
+                            }
+                        )
+                        Slider(value: powerBinding, in: Double(connection.minPower)...Double(connection.maxPower), step: 1)
+                    }
                 }
                 HStack {
                     if service.isScanning {
@@ -44,7 +47,7 @@ struct RFIDInventoryView: View {
                             service.scanOnce()
                         }
                         .buttonStyle(.borderedProminent)
-                        .disabled(!service.isConnected)
+                        .disabled(service.connection == nil)
                     }
 
                     if service.lastScanEPCs.count == 1, let epc = service.lastScanEPCs.first {

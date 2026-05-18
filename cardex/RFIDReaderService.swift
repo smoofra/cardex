@@ -4,6 +4,12 @@ import TSLAsciiCommands
 import ExternalAccessory
 import CoreBluetooth
 
+struct Connection {
+    var minPower: Int
+    var maxPower: Int
+    var power: Int
+}
+
 final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDelegate {
 
     struct RFIDTag: Hashable {
@@ -17,11 +23,8 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
 
     private let requiredProtocolString: String = "com.uk.tsl.rfid"
 
-    @Published var isConnected: Bool = false
     @Published var isScanning: Bool = false
-    @Published var power: Int = 16
-    @Published var minPower: Int = 4
-    @Published var maxPower: Int = 29
+    @Published var connection: Connection?
     @Published var tags: [RFIDTag] = []
     @Published var lastScanEPCs: Set<String> = []
     @Published var lastErrorMessage: String?
@@ -53,12 +56,10 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         if let accessory = findAccessory(matching: requiredProtocolString) {
             print("Found accessory: \(accessory.name). Attempting commander connect...")
             commander.connect(accessory)
-            isConnected = commander.isConnected
-            print("connect result isConnected:", isConnected)
+            print("connect result isConnected:", commander.isConnected)
             return
         }
 
-        isConnected = commander.isConnected
         print("No matching accessory for protocol: \(requiredProtocolString).")
 
         guard showPickerIfUnavailable else { return }
@@ -133,11 +134,11 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
                                                name:  NSNotification.Name.TSLCommanderStateChanged,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleAccessoryDidConnect(_:)),
+                                               selector: #selector(handleCommanderStateChanged(_:)),
                                                name: .EAAccessoryDidConnect,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleAccessoryDidDisconnect(_:)),
+                                               selector: #selector(handleCommanderStateChanged(_:)),
                                                name: .EAAccessoryDidDisconnect,
                                                object: nil)
         EAAccessoryManager.shared().registerForLocalNotifications()
@@ -150,31 +151,47 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     }
 
     @objc private func handleCommanderStateChanged(_ note: Notification) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.isConnected = self.commander.isConnected
+        if commander.isConnected {
+            queryPowerRange()
+        } else {
+            disconnect()
         }
     }
 
-    @objc private func handleAccessoryDidConnect(_ note: Notification) {
-        DispatchQueue.main.async { [weak self] in
-            self?.connectToAvailableAccessory(showPickerIfUnavailable: false)
-        }
-    }
-
-    @objc private func handleAccessoryDidDisconnect(_ note: Notification) {
-        DispatchQueue.main.async { [weak self] in
+    private func queryPowerRange() {
+        scanQueue.async { [weak self] in
             guard let self = self else { return }
-            self.isConnected = self.commander.isConnected
+            // Reset to defaults then read back — post-reset outputPower is the reader's maximum
+            let cmd = TSLInventoryCommand.synchronousCommand()
+            cmd.resetParameters = TSL_TriState_YES
+            cmd.readParameters = TSL_TriState_YES
+            cmd.takeNoAction = TSL_TriState_YES
+            self.commander.execute(cmd)
+            guard cmd.isSuccessful else {
+                print("power range query failed")
+                disconnect()
+                return
+            }
+            let lo = Int(TSLInventoryCommand.minimumOutputPower())
+            let hi = Int(cmd.outputPower)
+            if lo < 0 || hi < 0 || lo > hi {
+                print("power range query returned nonsensical values")
+                disconnect()
+                return
+            }
+            DispatchQueue.main.async {
+                let power = min(max(self.connection?.power ?? 16, lo), hi)
+                self.connection = Connection(minPower: lo, maxPower: hi, power: power)
+            }
         }
     }
 
     func disconnect() {
         commander.disconnect()
-        isConnected = commander.isConnected
         scanTimeoutWorkItem?.cancel()
         scanTimeoutWorkItem = nil
         DispatchQueue.main.async { [weak self] in
+            self?.connection = nil
             self?.isScanning = false
         }
     }
@@ -187,7 +204,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     }
 
     func scanOnce() {
-        guard isConnected else { return }
+        guard let connection else { return }
 
         isScanning = true
         lastErrorMessage = nil
@@ -208,7 +225,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         inv.includeEPC = TSL_TriState_YES
         inv.includeTransponderRSSI = TSL_TriState_YES
         inv.duplicateRemoval = TSL_DuplicateRemovalMode_On
-        inv.outputPower = Int32(power)
+        inv.outputPower = Int32(connection.power)
 
         var currentScanEPCs = Set<String>()
 
