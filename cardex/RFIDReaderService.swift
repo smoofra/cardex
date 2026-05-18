@@ -23,6 +23,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
 
     private let requiredProtocolString: String = "com.uk.tsl.rfid"
 
+    @Published var isConnecting: Bool = false
     @Published var isScanning: Bool = false
     @Published var connection: Connection?
     @Published var tags: [RFIDTag] = []
@@ -48,6 +49,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     func connect() {
         print("Attempting to connect via EAAccessory...")
         DispatchQueue.main.async {
+            self.isConnecting = true
             self.connectToAvailableAccessory(showPickerIfUnavailable: true)
         }
     }
@@ -57,12 +59,18 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             print("Found accessory: \(accessory.name). Attempting commander connect...")
             commander.connect(accessory)
             print("connect result isConnected:", commander.isConnected)
+            if !commander.isConnected {
+                isConnecting = false
+            }
             return
         }
 
         print("No matching accessory for protocol: \(requiredProtocolString).")
 
-        guard showPickerIfUnavailable else { return }
+        guard showPickerIfUnavailable else {
+            isConnecting = false
+            return
+        }
         requestBluetoothThenShowPicker()
     }
 
@@ -93,8 +101,10 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             }
         case .unauthorized:
             print("Bluetooth permission denied — user must enable in Settings > Privacy > Bluetooth")
+            isConnecting = false
         default:
             print("Bluetooth unavailable: \(central.state.rawValue)")
+            isConnecting = false
         }
     }
 
@@ -182,6 +192,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             DispatchQueue.main.async {
                 let power = min(max(self.connection?.power ?? 16, lo), hi)
                 self.connection = Connection(minPower: lo, maxPower: hi, power: power)
+                self.isConnecting = false
             }
         }
     }
@@ -193,6 +204,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         DispatchQueue.main.async { [weak self] in
             self?.connection = nil
             self?.isScanning = false
+            self?.isConnecting = false
         }
     }
 

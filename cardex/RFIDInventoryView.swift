@@ -21,6 +21,7 @@ struct RFIDInventoryView: View {
                             service.connect()
                         }
                         .buttonStyle(.borderedProminent)
+                        .disabled(service.isConnecting)
                     }
                 }
                 if let connection = service.connection {
