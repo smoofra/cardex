@@ -10,9 +10,9 @@ struct RFIDInventoryView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 HStack {
-                    if service.connection != nil {
+                    if let connection = service.connection {
                         Button("Disconnect") {
-                            service.disconnect()
+                            service.disconnect(connection.N)
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.red)
@@ -21,7 +21,7 @@ struct RFIDInventoryView: View {
                             service.connect()
                         }
                         .buttonStyle(.borderedProminent)
-                        .disabled(service.isConnecting)
+                        .disabled(service.connection != nil || service.currentConnectionAttempt != nil)
                     }
                 }
                 if let connection = service.connection {

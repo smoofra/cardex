@@ -5,6 +5,7 @@ import ExternalAccessory
 import CoreBluetooth
 
 struct Connection {
+    let N: Int
     var minPower: Int
     var maxPower: Int
     var power: Int
@@ -43,7 +44,7 @@ let requiredProtocolString: String = "com.uk.tsl.rfid"
 
 final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDelegate, TSLTransponderReceivedDelegate {
 
-    @Published var isConnecting: Bool = false
+    @Published var currentConnectionAttempt: Int?
     @Published var isScanning: Bool = false
     @Published var connection: Connection?
     @Published var tags: [RFIDTag] = []
@@ -51,14 +52,13 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     @Published var lastErrorMessage: String?
 
     private let scanQueue = DispatchQueue(label: "org.elder-gods.cardex.scan", qos: .default)
-    private var scanTimeoutWorkItem: DispatchWorkItem? = nil
+    private var timeout: DispatchWorkItem? = nil
     private var powerSendWorkItem: DispatchWorkItem? = nil
     private var currentScanEPCs: Set<String> = []
-    private var isShowingAccessoryPicker = false
-    private var pendingPickerRequest = false
     private let commander: TSLAsciiCommander
     private var centralManager: CBCentralManager?
     private var triggerResponder: InventoryResponder
+    private var nextConnectionAttmept : Int = 0
 
     // MARK: - Configuration
 
@@ -72,82 +72,71 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     }
 
     func connect() {
-        print("Attempting to connect via EAAccessory...")
-        DispatchQueue.main.async {
-            self.isConnecting = true
-            self.connectToAvailableAccessory(showPickerIfUnavailable: true)
+        assert(Thread.isMainThread)
+        guard (currentConnectionAttempt == nil) else {
+            fatalError("connect called while already connecting")
         }
+        print("connecting...")
+        let N = nextConnectionAttmept
+        currentConnectionAttempt = N
+        nextConnectionAttmept += 1
+        self.connectToAvailableAccessory(N, showPickerIfUnavailable: true)
     }
 
-    private func connectToAvailableAccessory(showPickerIfUnavailable: Bool) {
+    private func connectToAvailableAccessory(_ N: Int, showPickerIfUnavailable: Bool) {
+        assert(Thread.isMainThread)
+        print("trying to connect via EA...")
         if let accessory = findAccessory(matching: requiredProtocolString) {
             print("Found accessory: \(accessory.name). Attempting commander connect...")
             commander.connect(accessory)
-            print("connect result isConnected:", commander.isConnected)
             if !commander.isConnected {
-                isConnecting = false
+                disconnect(N, errorMessage:  "failed to connect to reader")
             }
             return
         }
-
-        print("No matching accessory for protocol: \(requiredProtocolString).")
-
+        
         guard showPickerIfUnavailable else {
-            isConnecting = false
+            disconnect(N, errorMessage: "No matching accessory")
             return
         }
-        requestBluetoothThenShowPicker()
-    }
+        
+        print("not found, showing picker")
 
-    // Ensure Bluetooth permission is granted before showing the EA picker.
-    // On iOS 26 the picker requires an authorized CBCentralManager or it fails
-    // at the usermanagerd XPC layer before any UI appears.
-    private func requestBluetoothThenShowPicker() {
-        guard !isShowingAccessoryPicker else { return }
+        // Ensure Bluetooth permission is granted before showing the EA picker.
+        // On iOS 26 the picker requires an authorized CBCentralManager or it fails
+        // at the usermanagerd XPC layer before any UI appears.
 
         if let cm = centralManager, cm.state == .poweredOn {
-            showBluetoothAccessoryPicker()
+            showBluetoothAccessoryPicker(N)
             return
         }
 
-        pendingPickerRequest = true
         centralManager = CBCentralManager(delegate: self, queue: .main)
     }
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        guard pendingPickerRequest else { return }
-        pendingPickerRequest = false
+        guard let N = currentConnectionAttempt else { return }
 
         switch central.state {
         case .poweredOn:
             // Delay to let the scene return to foreground-active after the permission dialog
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                self?.showBluetoothAccessoryPicker()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [self] in
+                self.showBluetoothAccessoryPicker(N)
             }
         case .unauthorized:
-            print("Bluetooth permission denied — user must enable in Settings > Privacy > Bluetooth")
-            isConnecting = false
+            disconnect(N, errorMessage: "Bluetooth permission denied")
         default:
-            print("Bluetooth unavailable: \(central.state.rawValue)")
-            isConnecting = false
+            disconnect(N, errorMessage: "Bluetooth unavailable: \(central.state.rawValue)")
         }
     }
 
-    private func showBluetoothAccessoryPicker() {
-        guard !isShowingAccessoryPicker else { return }
-        isShowingAccessoryPicker = true
-
-        EAAccessoryManager.shared().showBluetoothAccessoryPicker(withNameFilter: nil) { [weak self] error in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.isShowingAccessoryPicker = false
-
+    private func showBluetoothAccessoryPicker(_ N: Int) {
+        EAAccessoryManager.shared().showBluetoothAccessoryPicker(withNameFilter: nil) { [self] error in
+            DispatchQueue.main.async { [self] in
                 if let error = error {
-                    let nsError = error as NSError
-                    print("Bluetooth accessory picker error: \(error.localizedDescription) [\(nsError.domain) \(nsError.code)]")
+                    disconnect(N, errorMessage: "Bluetooth picker error: \(error)")
                 }
-
-                self.connectToAvailableAccessory(showPickerIfUnavailable: false)
+                connectToAvailableAccessory(N, showPickerIfUnavailable: false)
             }
         }
     }
@@ -164,8 +153,6 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             print("TSL:", line)
         }
         commander.add(logger)
-
-
         commander.add(triggerResponder)
         commander.addSynchronousResponder()
 
@@ -191,17 +178,35 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     }
 
     @objc private func handleCommanderStateChanged(_ note: Notification) {
-        if commander.isConnected {
-            setupReader()
+        assert(Thread.isMainThread)
+        guard let N = currentConnectionAttempt ?? connection?.N else { return }
+        if !commander.isConnected {
+            disconnect(N, errorMessage: "reader disconnected")
         } else {
-            disconnect()
+            setupReader(N)
         }
     }
+    
+    private func atN(_ N: Int) -> Bool {
+        if let N0 = self.connection?.N ?? self.currentConnectionAttempt, N0 != N {
+            return false
+        }
+        return true
+    }
 
-    private func setupReader() {
+    private func setupReader(_ N: Int) {
         scanQueue.async { [self] in
-            if !commander.isConnected {
-                disconnect()
+            
+            timeout?.cancel()
+            let workItem = DispatchWorkItem { [self] in
+                disconnect(N, errorMessage: "timeout reached.")
+            }
+            timeout = workItem
+            scanQueue.asyncAfter(deadline: .now() + 30.0, execute: workItem)
+
+            
+            guard commander.isConnected, atN(N) else {
+                disconnect(N, errorMessage: "reader is not connected")
                 return
             }
             print("querying power range of reader")
@@ -211,14 +216,14 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             cmd.readParameters = TSL_TriState_YES
             cmd.takeNoAction = TSL_TriState_YES
             commander.execute(cmd)
-            guard cmd.isSuccessful else {
-                disconnect(errorMessage: "power range query failed")
+            guard cmd.isSuccessful, atN(N) else {
+                disconnect(N, errorMessage: "power range query failed")
                 return
             }
             let lo = Int(TSLInventoryCommand.minimumOutputPower())
             let hi = Int(cmd.outputPower)
             if lo < 0 || hi < 0 || lo > hi {
-                disconnect(errorMessage: "power range query returned nonsense values")
+                disconnect(N, errorMessage: "power range query returned nonsense values")
                 return
             }
             
@@ -227,8 +232,8 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             switchAction.asynchronousReportingEnabled = TSL_TriState_YES
             switchAction.singlePressAction = TSL_SwitchAction_inventory
             commander.execute(switchAction)
-            if !switchAction.isSuccessful {
-                disconnect(errorMessage: "switch action setup failed")
+            guard switchAction.isSuccessful,atN(N) else {
+                disconnect(N, errorMessage: "switch action setup failed")
                 return
             }
             
@@ -242,42 +247,45 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             cmd.duplicateRemoval = TSL_DuplicateRemovalMode_On
             cmd.outputPower = Int32(power)
             commander.execute(cmd)
-            if !cmd.isSuccessful {
-                disconnect(errorMessage: "inventory command setup failed")
+            guard cmd.isSuccessful, atN(N) else {
+                disconnect(N, errorMessage: "inventory command setup failed")
                 return
             }
             
+            timeout?.cancel()
+            
             DispatchQueue.main.async {
-                self.connection = Connection(minPower: lo, maxPower: hi, power: power)
-                self.isConnecting = false
+                self.connection = Connection(N: N, minPower: lo, maxPower: hi, power: power)
+                self.currentConnectionAttempt = nil
             }
         }
     }
 
     func setPower(_ newPower: Int) {
-        guard var conn = connection else { return }
-        let clamped = min(max(newPower, conn.minPower), conn.maxPower)
-        guard clamped != conn.power else { return }
-        conn.power = clamped
-        connection = conn
+        assert(Thread.isMainThread)
+        guard var connection = self.connection else { return }
+        let clamped = min(max(newPower, connection.minPower), connection.maxPower)
+        guard clamped != connection.power else { return }
+        connection.power = clamped
+        self.connection = connection
 
         // Debounce so dragging the slider doesn't flood the reader.
         powerSendWorkItem?.cancel()
         let item = DispatchWorkItem { [self] in
-            self.sendPowerToReader(clamped)
+            self.sendPowerToReader(connection)
         }
         powerSendWorkItem = item
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: item)
     }
 
-    private func sendPowerToReader(_ power: Int) {
+    private func sendPowerToReader(_ connection: Connection) {
         scanQueue.async { [self] in
             let cmd = TSLInventoryCommand.synchronousCommand()
             cmd.takeNoAction = TSL_TriState_YES
-            cmd.outputPower = Int32(power)
+            cmd.outputPower = Int32(connection.power)
             commander.execute(cmd)
             if !cmd.isSuccessful {
-                disconnect(errorMessage: "set power failed.")
+                disconnect(connection.N, errorMessage: "set power failed.")
             }
         }
     }
@@ -301,20 +309,24 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         }
     }
     
-    func disconnect(errorMessage: String? = nil) {
-        commander.disconnect()
-        scanTimeoutWorkItem?.cancel()
-        scanTimeoutWorkItem = nil
-        powerSendWorkItem?.cancel()
-        powerSendWorkItem = nil
+    func disconnect(_ N: Int, errorMessage: String? = nil) {
         DispatchQueue.main.async { [self] in
+            let N0 = self.currentConnectionAttempt ?? self.connection?.N
+            if let N0, N < N0 {
+                return
+            }
+            timeout?.cancel()
+            timeout = nil
+            powerSendWorkItem?.cancel()
+            powerSendWorkItem = nil
+            commander.disconnect()
             if let errorMessage {
-                print(errorMessage)
+                print("\(errorMessage)")
                 self.lastErrorMessage = errorMessage
             }
             self.connection = nil
             self.isScanning = false
-            self.isConnecting = false
+            self.currentConnectionAttempt = nil
             self.currentScanEPCs = []
         }
     }
@@ -333,12 +345,12 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         lastErrorMessage = nil
         currentScanEPCs = []
 
-        scanTimeoutWorkItem?.cancel()
+        timeout?.cancel()
         let workItem = DispatchWorkItem { [self] in
             print("Scan timeout reached.")
             stopScan()
         }
-        scanTimeoutWorkItem = workItem
+        timeout = workItem
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: workItem)
 
         let inv = TSLInventoryCommand.synchronousCommand()
@@ -349,12 +361,12 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
 
         scanQueue.async { [self] in
             commander.execute(inv)
-            self.scanTimeoutWorkItem?.cancel()
-            self.scanTimeoutWorkItem = nil
+            self.timeout?.cancel()
+            self.timeout = nil
             DispatchQueue.main.async {
                 self.isScanning = false
-                self.scanTimeoutWorkItem?.cancel()
-                self.scanTimeoutWorkItem = nil
+                self.timeout?.cancel()
+                self.timeout = nil
                 self.isScanning = false
                 if !inv.isSuccessful {
                     print("failed!")
@@ -369,8 +381,8 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     func stopScan() {
         if !commander.isConnected { return }
         commander.abortSynchronousCommand()
-        scanTimeoutWorkItem?.cancel()
-        scanTimeoutWorkItem = nil
+        timeout?.cancel()
+        timeout = nil
         self.isScanning = false
     }
 }
