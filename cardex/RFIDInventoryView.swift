@@ -29,9 +29,7 @@ struct RFIDInventoryView: View {
                         Text("Power: \(connection.power)")
                         let powerBinding = Binding<Double>(
                             get: { Double(service.connection?.power ?? connection.minPower) },
-                            set: {
-                                service.connection?.power = Int($0.rounded())
-                            }
+                            set: { service.setPower(Int($0.rounded())) }
                         )
                         Slider(value: powerBinding, in: Double(connection.minPower)...Double(connection.maxPower), step: 1)
                     }

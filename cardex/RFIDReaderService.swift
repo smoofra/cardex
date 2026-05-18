@@ -10,18 +10,38 @@ struct Connection {
     var power: Int
 }
 
-final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDelegate {
+// This custom responder does the same thing whether the inventory command was initated by the
+// app as a synchonous command, initiated by the reader when the user pulls the trigger.
+private final class InventoryResponder: TSLAsciiCommandResponderBase  {
+    let transponderResponder = TSLTransponderResponder()
 
-    struct RFIDTag: Hashable {
-        let epc: String
-        let rssi: Int?
-        var count: Int = 1
+    override init() {
+        super.init(commandName: ".iv")
     }
 
-    private let commander: TSLAsciiCommander
-    private var centralManager: CBCentralManager?
+    override func processReceivedLine(_ fullLine: String, header: String, value: String, moreLinesAvailable moreAvailable: Bool) -> Bool {
+        switch header {
+        case "EP":
+            transponderResponder.processReceivedLine(header, value: value)
+        case "OK", "ER":
+            transponderResponder.transponderComplete(withMoreAvailable: false)
+        default:
+            break
+        }
+        return false // keep passing lines to other responders
+    }
+}
 
-    private let requiredProtocolString: String = "com.uk.tsl.rfid"
+struct RFIDTag: Hashable {
+    let epc: String
+    let rssi: Int?
+    var count: Int = 1
+}
+
+let requiredProtocolString: String = "com.uk.tsl.rfid"
+
+
+final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDelegate, TSLTransponderReceivedDelegate {
 
     @Published var isConnecting: Bool = false
     @Published var isScanning: Bool = false
@@ -32,8 +52,13 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
 
     private let scanQueue = DispatchQueue(label: "org.elder-gods.cardex.scan", qos: .default)
     private var scanTimeoutWorkItem: DispatchWorkItem? = nil
+    private var powerSendWorkItem: DispatchWorkItem? = nil
+    private var currentScanEPCs: Set<String> = []
     private var isShowingAccessoryPicker = false
     private var pendingPickerRequest = false
+    private let commander: TSLAsciiCommander
+    private var centralManager: CBCentralManager?
+    private var triggerResponder: InventoryResponder
 
     // MARK: - Configuration
 
@@ -129,14 +154,19 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
 
     init(overrideInit: Bool = false) {
         commander = TSLAsciiCommander()
-
+        triggerResponder = InventoryResponder()
         super.init()
+        triggerResponder.transponderResponder.transponderDelegate = self
+
 
         let logger = TSLLoggerResponder.default()
         logger.lineReceivedBlock = { line in
             print("TSL:", line)
         }
         commander.add(logger)
+
+
+        commander.add(triggerResponder)
         commander.addSynchronousResponder()
 
         NotificationCenter.default.addObserver(self,
@@ -162,49 +192,130 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
 
     @objc private func handleCommanderStateChanged(_ note: Notification) {
         if commander.isConnected {
-            queryPowerRange()
+            setupReader()
         } else {
             disconnect()
         }
     }
 
-    private func queryPowerRange() {
-        scanQueue.async { [weak self] in
-            guard let self = self else { return }
+    private func setupReader() {
+        scanQueue.async { [self] in
+            if !commander.isConnected {
+                disconnect()
+                return
+            }
+            print("querying power range of reader")
             // Reset to defaults then read back — post-reset outputPower is the reader's maximum
-            let cmd = TSLInventoryCommand.synchronousCommand()
+            var cmd = TSLInventoryCommand.synchronousCommand()
             cmd.resetParameters = TSL_TriState_YES
             cmd.readParameters = TSL_TriState_YES
             cmd.takeNoAction = TSL_TriState_YES
-            self.commander.execute(cmd)
+            commander.execute(cmd)
             guard cmd.isSuccessful else {
-                print("power range query failed")
-                disconnect()
+                disconnect(errorMessage: "power range query failed")
                 return
             }
             let lo = Int(TSLInventoryCommand.minimumOutputPower())
             let hi = Int(cmd.outputPower)
             if lo < 0 || hi < 0 || lo > hi {
-                print("power range query returned nonsensical values")
-                disconnect()
+                disconnect(errorMessage: "power range query returned nonsense values")
                 return
             }
+            
+            print("setting up switch action")
+            let switchAction = TSLSwitchActionCommand.synchronousCommand()
+            switchAction.asynchronousReportingEnabled = TSL_TriState_YES
+            switchAction.singlePressAction = TSL_SwitchAction_inventory
+            commander.execute(switchAction)
+            if !switchAction.isSuccessful {
+                disconnect(errorMessage: "switch action setup failed")
+                return
+            }
+            
+            let power = min(max(self.connection?.power ?? 16, lo), hi)
+            
+            print("setting ip inventory command")
+            cmd = TSLInventoryCommand.synchronousCommand()
+            cmd.takeNoAction = TSL_TriState_YES
+            cmd.includeEPC = TSL_TriState_YES
+            cmd.includeTransponderRSSI = TSL_TriState_YES
+            cmd.duplicateRemoval = TSL_DuplicateRemovalMode_On
+            cmd.outputPower = Int32(power)
+            commander.execute(cmd)
+            if !cmd.isSuccessful {
+                disconnect(errorMessage: "inventory command setup failed")
+                return
+            }
+            
             DispatchQueue.main.async {
-                let power = min(max(self.connection?.power ?? 16, lo), hi)
                 self.connection = Connection(minPower: lo, maxPower: hi, power: power)
                 self.isConnecting = false
             }
         }
     }
 
-    func disconnect() {
+    func setPower(_ newPower: Int) {
+        guard var conn = connection else { return }
+        let clamped = min(max(newPower, conn.minPower), conn.maxPower)
+        guard clamped != conn.power else { return }
+        conn.power = clamped
+        connection = conn
+
+        // Debounce so dragging the slider doesn't flood the reader.
+        powerSendWorkItem?.cancel()
+        let item = DispatchWorkItem { [self] in
+            self.sendPowerToReader(clamped)
+        }
+        powerSendWorkItem = item
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: item)
+    }
+
+    private func sendPowerToReader(_ power: Int) {
+        scanQueue.async { [self] in
+            let cmd = TSLInventoryCommand.synchronousCommand()
+            cmd.takeNoAction = TSL_TriState_YES
+            cmd.outputPower = Int32(power)
+            commander.execute(cmd)
+            if !cmd.isSuccessful {
+                disconnect(errorMessage: "set power failed.")
+            }
+        }
+    }
+    
+    func transponderReceived(_ transponder: TSLTransponderData, moreAvailable: Bool) {
+        let epc = transponder.epc
+        let rssi = transponder.rssi?.intValue
+        DispatchQueue.main.async {
+            if let epc {
+                self.currentScanEPCs.insert(epc)
+                if let index = self.tags.firstIndex(where: { $0.epc == epc }) {
+                    self.tags[index] = RFIDTag(epc: epc, rssi: rssi, count: self.tags[index].count + 1)
+                } else {
+                    self.tags.append(RFIDTag(epc: epc, rssi: rssi))
+                }
+            }
+            if !moreAvailable {
+                self.lastScanEPCs = self.currentScanEPCs
+                self.currentScanEPCs = []
+            }
+        }
+    }
+    
+    func disconnect(errorMessage: String? = nil) {
         commander.disconnect()
         scanTimeoutWorkItem?.cancel()
         scanTimeoutWorkItem = nil
-        DispatchQueue.main.async { [weak self] in
-            self?.connection = nil
-            self?.isScanning = false
-            self?.isConnecting = false
+        powerSendWorkItem?.cancel()
+        powerSendWorkItem = nil
+        DispatchQueue.main.async { [self] in
+            if let errorMessage {
+                print(errorMessage)
+                self.lastErrorMessage = errorMessage
+            }
+            self.connection = nil
+            self.isScanning = false
+            self.isConnecting = false
+            self.currentScanEPCs = []
         }
     }
 
@@ -220,15 +331,12 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
 
         isScanning = true
         lastErrorMessage = nil
+        currentScanEPCs = []
 
         scanTimeoutWorkItem?.cancel()
-        let workItem = DispatchWorkItem { [weak self] in
-            guard let self = self else { return }
-            print("Scan timeout reached. Aborting command and resetting state.")
-            self.commander.abortSynchronousCommand()
-            DispatchQueue.main.async {
-                self.isScanning = false
-            }
+        let workItem = DispatchWorkItem { [self] in
+            print("Scan timeout reached.")
+            stopScan()
         }
         scanTimeoutWorkItem = workItem
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: workItem)
@@ -239,41 +347,18 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         inv.duplicateRemoval = TSL_DuplicateRemovalMode_On
         inv.outputPower = Int32(connection.power)
 
-        var currentScanEPCs = Set<String>()
-
-        inv.transponderDataReceivedBlock = { [weak self] transponder, moreAvailable in
-            guard let self = self else { return }
-
+        scanQueue.async { [self] in
+            commander.execute(inv)
+            self.scanTimeoutWorkItem?.cancel()
+            self.scanTimeoutWorkItem = nil
             DispatchQueue.main.async {
-                if let epc = transponder.epc {
-                    let rssi = transponder.rssi?.intValue
-                    currentScanEPCs.insert(epc)
-                    if let index = self.tags.firstIndex(where: { $0.epc == epc }) {
-                        self.tags[index] = RFIDTag(epc: epc, rssi: rssi, count: self.tags[index].count + 1)
-                    } else {
-                        self.tags.append(RFIDTag(epc: epc, rssi: rssi))
-                    }
-                }
-
-                if !moreAvailable {
-                    self.scanTimeoutWorkItem?.cancel()
-                    self.scanTimeoutWorkItem = nil
-                    self.isScanning = false
-                    self.lastScanEPCs = currentScanEPCs
-                }
-            }
-        }
-        scanQueue.async { [weak self] in
-            guard let self = self else { return }
-            self.commander.execute(inv)
-
-            DispatchQueue.main.async {
+                self.isScanning = false
                 self.scanTimeoutWorkItem?.cancel()
                 self.scanTimeoutWorkItem = nil
                 self.isScanning = false
                 if !inv.isSuccessful {
                     print("failed!")
-                    self.lastErrorMessage = inv.errorCode.map { "Reader error ER:\($0)" } ?? "Reader error"
+                    self.lastErrorMessage = inv.errorCode.map { "Reader error ER:\($0)" } ?? "unknown error"
                 } else {
                     print("done.")
                 }
@@ -282,11 +367,10 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     }
 
     func stopScan() {
+        if !commander.isConnected { return }
         commander.abortSynchronousCommand()
         scanTimeoutWorkItem?.cancel()
         scanTimeoutWorkItem = nil
-        DispatchQueue.main.async {
-            self.isScanning = false
-        }
+        self.isScanning = false
     }
 }
