@@ -1,6 +1,9 @@
 import SwiftUI
 import AVFoundation
 import Vision
+import os
+
+private let log = Logger(subsystem: "org.elder-gods.cardex", category: "ISBNScanner")
 
 
 public enum Identifier: Equatable, CustomStringConvertible {
@@ -262,6 +265,6 @@ private final class ScannerViewController: UIViewController,
 
 #Preview {
     NavigationStack {
-        ISBNScannerView { code in print("Scanned: \(code)") }
+        ISBNScannerView { code in log.info("Scanned: \(code, privacy: .public)") }
     }
 }
