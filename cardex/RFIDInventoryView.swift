@@ -58,7 +58,7 @@ struct RFIDInventoryView: View {
                             .tint(.red)
                         } else {
                             Button("Scan Once") {
-                                service.scanOnce()
+                                service.startScan()
                             }
                             .buttonStyle(.borderedProminent)
                             .disabled(service.connection == nil)
