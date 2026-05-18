@@ -10,12 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var rfidService = RFIDReaderService()
     @State private var showingScanner = false
-    @State private var scannedISBN: String? = nil
     @State private var title: String? = nil
     @State private var isFetchingTitle = false
-    @State private var showingDOIScanner = false
-    @State private var scannedDOI: String? = nil
-    @State private var isFetchingDOITitle = false
+    @State private var scannedID: Identifier? = nil
     @State private var scannedEPC: String? = nil
     @State private var saveError: String? = nil
 
@@ -28,24 +25,11 @@ struct ContentView: View {
                 Text("Scan an ISBN or DOI")
                     .font(.title2)
 
-                if scannedISBN != nil || scannedDOI != nil || scannedEPC != nil {
+                if scannedID != nil || scannedEPC != nil {
                     VStack(alignment: .leading, spacing: 6) {
-                        if let isbn = scannedISBN {
-                            Text("ISBN: \(isbn)")
+                        if let scannedID {
+                            Text(scannedID.description)
                             if isFetchingTitle {
-                                ProgressView()
-                                    .scaleEffect(0.7)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            } else if let title = title {
-                                Text(title)
-                                    .font(.body)
-                                    .foregroundStyle(.secondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                        }
-                        if let doi = scannedDOI {
-                            Text("DOI: \(doi)")
-                            if isFetchingDOITitle {
                                 ProgressView()
                                     .scaleEffect(0.7)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -68,7 +52,7 @@ struct ContentView: View {
                 Button {
                     showingScanner = true
                 } label: {
-                    Label("Scan ISBN", systemImage: "barcode.viewfinder")
+                    Label("Scan ISBN or DOI", systemImage: "barcode.viewfinder")
                         .font(.headline)
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
@@ -76,17 +60,6 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                 }
                 .padding(.top, 12)
-
-                Button {
-                    showingDOIScanner = true
-                } label: {
-                    Label("Scan DOI", systemImage: "doc.text.viewfinder")
-                        .font(.headline)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .background(.tint, in: Capsule())
-                        .foregroundStyle(.white)
-                }
 
                 NavigationLink(destination: RFIDInventoryView(onConfirm: { epc in
                     scannedEPC = epc
@@ -99,10 +72,10 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                 }
 
-                if scannedISBN != nil || scannedDOI != nil, let epc = scannedEPC {
+                if let id = scannedID, let epc = scannedEPC {
                     Button {
                         rfidService.clearTags()
-                        save(isbn: scannedISBN ?? "", doi: scannedDOI ?? "", epc: epc, title: title ?? "")
+                        save(identifier: id, epc: epc, title: title ?? "")
                     } label: {
                         Label("Save", systemImage: "square.and.arrow.down")
                             .font(.headline)
@@ -123,28 +96,21 @@ struct ContentView: View {
             .navigationTitle("cardex")
             .sheet(isPresented: $showingScanner) {
                 NavigationStack {
-                    ISBNScannerView { isbn in
-                        scannedISBN = isbn
-                        scannedDOI = nil
+                    ISBNScannerView { identifier in
+                        scannedID = identifier
                         title = nil
                         isFetchingTitle = true
-                        Task {
-                            title = await lookupISBNTitle(isbn: isbn)
-                            isFetchingTitle = false
-                        }
-                    }
-                }
-            }
-            .sheet(isPresented: $showingDOIScanner) {
-                NavigationStack {
-                    DOIScannerView { doi in
-                        scannedDOI = doi
-                        scannedISBN = nil
-                        title = nil
-                        isFetchingDOITitle = true
-                        Task {
-                            title = await lookupDOITitle(doi: doi)
-                            isFetchingDOITitle = false
+                        switch identifier {
+                        case .isbn(let isbn):
+                            Task {
+                                title = await lookupISBNTitle(isbn: isbn)
+                                isFetchingTitle = false
+                            }
+                        case .doi(let doi):
+                            Task {
+                                title = await lookupDOITitle(doi: doi)
+                                isFetchingTitle = false
+                            }
                         }
                     }
                 }
@@ -212,7 +178,15 @@ struct ContentView: View {
         return s
     }
 
-    private func save(isbn: String, doi: String, epc: String, title: String) {
+    private func save(identifier: Identifier, epc: String, title: String) {
+        var isbn: String = ""
+        var doi: String = ""
+        switch identifier {
+        case .isbn(let x):
+            isbn = x
+        case .doi(let x):
+            doi = x
+        }
         let fileName = "cardex.csv"
 
         let dir: URL
@@ -235,9 +209,8 @@ struct ContentView: View {
                 let header = "isbn,doi,epc,title\r\n"
                 try (header + line).write(to: fileURL, atomically: true, encoding: .utf8)
             }
-            scannedISBN = nil
+            scannedID = nil
             self.title = nil
-            scannedDOI = nil
             scannedEPC = nil
             saveError = nil
         } catch {

@@ -2,18 +2,33 @@ import SwiftUI
 import AVFoundation
 import Vision
 
+
+public enum Identifier: Equatable, CustomStringConvertible {
+    case isbn(String)
+    case doi(String)
+
+    public var description: String {
+        switch self {
+        case .isbn(let value):
+            "ISBN: \(value)"
+        case .doi(let value):
+            "DOI: \(value)"
+        }
+    }
+}
+
 public struct ISBNScannerView: View {
     @Environment(\.dismiss) private var dismiss
-    let onScanned: (String) -> Void
+    let onScanned: (Identifier) -> Void
 
-    public init(onScanned: @escaping (String) -> Void) {
+    public init(onScanned: @escaping (Identifier) -> Void) {
         self.onScanned = onScanned
     }
 
     public var body: some View {
         ZStack {
-            CameraScannerView(onScanned: { isbn in
-                onScanned(isbn)
+            CameraScannerView(onScanned: { identifier in
+                onScanned(identifier)
                 dismiss()
             })
             .ignoresSafeArea()
@@ -32,7 +47,7 @@ public struct ISBNScannerView: View {
                     .foregroundStyle(.white.opacity(0.7))
                     .frame(width: 280, height: 180)
                 Spacer()
-                Text("Align the ISBN barcode or number within the frame")
+                Text("Align the barcode, ISBN, DOI or arXiv ID within the frame")
                     .padding(12)
                     .background(.ultraThinMaterial, in: Capsule())
                     .padding(.bottom, 40)
@@ -46,7 +61,7 @@ public struct ISBNScannerView: View {
 // MARK: - UIKit camera bridge
 
 private struct CameraScannerView: UIViewControllerRepresentable {
-    let onScanned: (String) -> Void
+    let onScanned: (Identifier) -> Void
 
     func makeUIViewController(context: Context) -> ScannerViewController {
         let vc = ScannerViewController()
@@ -65,7 +80,7 @@ private final class ScannerViewController: UIViewController,
         AVCaptureMetadataOutputObjectsDelegate,
         AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    var onScanned: ((String) -> Void)?
+    var onScanned: ((Identifier) -> Void)?
 
     private let session = AVCaptureSession()
     private let metadataOutput = AVCaptureMetadataOutput()
@@ -154,7 +169,7 @@ private final class ScannerViewController: UIViewController,
                   let isbn = normalizedISBN(from: value) else { continue }
             didSendResult = true
             stopSession()
-            onScanned?(isbn)
+            onScanned?(.isbn(isbn))
             return
         }
     }
@@ -176,10 +191,17 @@ private final class ScannerViewController: UIViewController,
             let strings = (req.results as? [VNRecognizedTextObservation])?.compactMap {
                 $0.topCandidates(1).first?.string
             } ?? []
-            guard let isbn = self.findISBN(in: strings) else { return }
-            self.didSendResult = true
-            self.stopSession()
-            DispatchQueue.main.async { self.onScanned?(isbn) }
+            if let isbn = self.findISBN(in: strings) {
+                self.didSendResult = true
+                self.stopSession()
+                DispatchQueue.main.async { self.onScanned?(.isbn(isbn)) }
+            } else if let doi = self.findDOI(in: strings) {
+                self.didSendResult = true
+                self.stopSession()
+                DispatchQueue.main.async { self.onScanned?(.doi(doi)) }
+            } else {
+                return
+            }
         }
         request.recognitionLevel = .accurate
         request.usesLanguageCorrection = false
@@ -209,6 +231,33 @@ private final class ScannerViewController: UIViewController,
         if digits.count == 10 { return digits }
         return nil
     }
+    
+    
+    private func findDOI(in strings: [String]) -> String? {
+        let doiPattern = try? NSRegularExpression(pattern: "(?i)(?:doi:\\s*)?(10\\.\\d{4,}/\\S+)")
+        let arxivPattern = try? NSRegularExpression(pattern: "(?i)arxiv:\\s*(\\d{4}\\.\\d{4,5}(?:v\\d+)?|[a-z.-]+/\\d{7}(?:v\\d+)?)")
+        for text in strings {
+            let nsText = text as NSString
+            let range = NSRange(location: 0, length: nsText.length)
+            if let match = doiPattern?.firstMatch(in: text, range: range) {
+                let captureRange = match.range(at: 1)
+                if captureRange.location != NSNotFound {
+                    return nsText.substring(with: captureRange)
+                }
+            }
+            if let match = arxivPattern?.firstMatch(in: text, range: range) {
+                let captureRange = match.range(at: 1)
+                if captureRange.location != NSNotFound {
+                    let idWithVersion = nsText.substring(with: captureRange)
+                    // Strip version suffix (v1, v4, etc.) before forming DOI
+                    let id = idWithVersion.replacingOccurrences(of: #"v\d+$"#, with: "", options: .regularExpression)
+                    return "10.48550/arXiv.\(id)"
+                }
+            }
+        }
+        return nil
+    }
+
 }
 
 #Preview {
