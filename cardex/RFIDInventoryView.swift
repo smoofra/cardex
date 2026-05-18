@@ -37,29 +37,47 @@ struct RFIDInventoryView: View {
                     }
                 }
                 HStack {
-                    if service.isScanning {
-                        Button("Stop") {
-                            service.stopScan()
+                    Color.clear
+                        .frame(width: 44, height: 44)
+
+                    Spacer()
+
+                    HStack {
+                        if service.lastScanEPCs.count == 1, let epc = service.lastScanEPCs.first {
+                            Button("OK") {
+                                onConfirm(epc)
+                                service.clearTags()
+                                dismiss()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.green)
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.red)
-                    } else {
-                        Button("Scan Once") {
-                            service.scanOnce()
+                        if service.isScanning {
+                            Button("Stop") {
+                                service.stopScan()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.red)
+                        } else {
+                            Button("Scan Once") {
+                                service.scanOnce()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(service.connection == nil)
                         }
-                        .buttonStyle(.borderedProminent)
-                        .disabled(service.connection == nil)
                     }
 
-                    if service.lastScanEPCs.count == 1, let epc = service.lastScanEPCs.first {
-                        Button("OK") {
-                            onConfirm(epc)
-                            service.clearTags()
-                            dismiss()
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.green)
+                    Spacer()
+
+                    Button {
+                        service.clearTags()
+                    } label: {
+                        Image(systemName: "trash")
+                            .frame(width: 20, height: 20)
                     }
+                    .buttonStyle(.bordered)
+                    .accessibilityLabel("Clear Tags")
+                    .disabled(service.tags.isEmpty)
                 }
                 List(service.tags.sorted { $0.count > $1.count }, id: \.epc) { tag in
                     HStack {
