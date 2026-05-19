@@ -10,9 +10,9 @@ struct RFIDInventoryView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 HStack {
-                    if let connection = service.connection {
+                    if service.connected {
                         Button("Disconnect") {
-                            service.disconnect(connection.N)
+                            service.disconnect()
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.red)
@@ -21,14 +21,14 @@ struct RFIDInventoryView: View {
                             service.connect()
                         }
                         .buttonStyle(.borderedProminent)
-                        .disabled(service.connection != nil || service.currentConnectionAttempt != nil)
+                        .disabled(!service.disconnected)
                     }
                 }
                 if let connection = service.connection {
                     VStack(alignment: .leading) {
-                        Text("Power: \(connection.power)")
+                        Text("Power: \(service.power)")
                         let powerBinding = Binding<Double>(
-                            get: { Double(service.connection?.power ?? connection.minPower) },
+                            get: { Double(service.power) },
                             set: { service.setPower(Int($0.rounded())) }
                         )
                         Slider(value: powerBinding, in: Double(connection.minPower)...Double(connection.maxPower), step: 1)
@@ -50,7 +50,7 @@ struct RFIDInventoryView: View {
                             .buttonStyle(.borderedProminent)
                             .tint(.green)
                         }
-                        if service.isScanning {
+                        if case .scanning = service.state {
                             Button("Stop") {
                                 service.stopScan()
                             }
@@ -61,7 +61,7 @@ struct RFIDInventoryView: View {
                                 service.startScan()
                             }
                             .buttonStyle(.borderedProminent)
-                            .disabled(service.connection == nil)
+                            .disabled(!service.connected)
                         }
                     }
 
