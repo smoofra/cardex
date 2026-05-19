@@ -84,16 +84,41 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
     private let commander: TSLAsciiCommander
     private var centralManager: CBCentralManager?
 
-    // MARK: - Configuration
 
-    @MainActor
-    private func findAccessory(matching protocolString: String) -> EAAccessory? {
-        let accessories = EAAccessoryManager.shared().connectedAccessories
-        log.debug("EA connected accessories:")
-        accessories.forEach { acc in
-            log.debug("- \(acc.name, privacy: .public) by \(acc.manufacturer, privacy: .public) protocols: \(acc.protocolStrings, privacy: .public)")
+
+    init(overrideInit: Bool = false) {
+        commander = TSLAsciiCommander()
+        super.init()
+
+        let logger = TSLLoggerResponder.default()
+        logger.lineReceivedBlock = { line in
+            protocolLog.info("\(line, privacy: .public)")
         }
-        return accessories.first { $0.protocolStrings.contains(protocolString) }
+        commander.add(logger)
+        let triggerResponder = InventoryResponder()
+        triggerResponder.transponderResponder.transponderDelegate = self
+        commander.add(triggerResponder)
+        commander.addSynchronousResponder()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleCommanderStateChanged(_:)),
+                                               name:  NSNotification.Name.TSLCommanderStateChanged,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleCommanderStateChanged(_:)),
+                                               name: .EAAccessoryDidConnect,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleCommanderStateChanged(_:)),
+                                               name: .EAAccessoryDidDisconnect,
+                                               object: nil)
+        EAAccessoryManager.shared().registerForLocalNotifications()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        EAAccessoryManager.shared().unregisterForLocalNotifications()
+        commander.halt()
     }
     
     var connection: Connection? {
@@ -124,6 +149,19 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             return false
         }
     }
+
+    // MARK: Establish Connection to RFID Reader
+
+    @MainActor
+    private func findAccessory(matching protocolString: String) -> EAAccessory? {
+        let accessories = EAAccessoryManager.shared().connectedAccessories
+        log.debug("EA connected accessories:")
+        accessories.forEach { acc in
+            log.debug("- \(acc.name, privacy: .public) by \(acc.manufacturer, privacy: .public) protocols: \(acc.protocolStrings, privacy: .public)")
+        }
+        return accessories.first { $0.protocolStrings.contains(protocolString) }
+    }
+
 
     @MainActor
     func connect() {
@@ -193,40 +231,6 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         }
     }
 
-    init(overrideInit: Bool = false) {
-        commander = TSLAsciiCommander()
-        super.init()
-
-        let logger = TSLLoggerResponder.default()
-        logger.lineReceivedBlock = { line in
-            protocolLog.info("\(line, privacy: .public)")
-        }
-        commander.add(logger)
-        let triggerResponder = InventoryResponder()
-        triggerResponder.transponderResponder.transponderDelegate = self
-        commander.add(triggerResponder)
-        commander.addSynchronousResponder()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleCommanderStateChanged(_:)),
-                                               name:  NSNotification.Name.TSLCommanderStateChanged,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleCommanderStateChanged(_:)),
-                                               name: .EAAccessoryDidConnect,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleCommanderStateChanged(_:)),
-                                               name: .EAAccessoryDidDisconnect,
-                                               object: nil)
-        EAAccessoryManager.shared().registerForLocalNotifications()
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-        EAAccessoryManager.shared().unregisterForLocalNotifications()
-        commander.halt()
-    }
 
     @MainActor @objc
     private func handleCommanderStateChanged(_ note: Notification) {
@@ -243,64 +247,8 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             break
         }
     }
-
-    @MainActor
-    private func runOrDisconnect(_ work: @escaping @MainActor () async throws -> Void) -> Task<Void, Never> {
-        return Task {
-            do {
-                try await work()
-            } catch {
-                disconnect(errorMessage: "\(error)")
-            }
-        }
-    }
-    
-
-
-    // Run a synchronous reader command on scanQueue, throwing if the reader is
-    // not connected, the command fails, or this connection attempt has been
-    // superseded.
-    @MainActor
-    private func execute(_ cmd: TSLAsciiSelfResponderCommandBase, failure: String) async throws {
-        var waiting = true
-        let commander = self.commander
-        try await withTaskCancellationHandler(operation: {
-            try await withCheckedThrowingContinuation { (k: CheckedContinuation<Void, any Error>) in
-                scanQueue.async {
-                    if !commander.isConnected {
-                        k.resume(throwing: RFIDError(message: "reader disconnected"))
-                    }
-                    commander.execute(cmd)
-                    waiting = false
-                    k.resume()
-                }
-            }
-        }, onCancel: {
-            DispatchQueue.main.async {
-                if waiting {
-                    commander.abortSynchronousCommand()
-                }
-            }
-        })
-        try Task.checkCancellation()
-        guard cmd.isSuccessful else {
-            throw RFIDError(message: failure, code: cmd.errorCode)
-        }
-    }
     
     
-    private func withTimeout(_ duration: Duration, work: @escaping @MainActor () async throws -> Void) async throws {
-        try await withThrowingTaskGroup(of: Void.self) { group in
-            group.addTask { try await work() }
-            group.addTask {
-                try await Task.sleep(for: duration)
-                throw RFIDError(message: "timeout reached")
-            }
-            try await group.next()
-            group.cancelAll()
-        }
-    }
-
     @MainActor
     private func setupReader() async throws {
         guard case .setup = state else { return }
@@ -339,6 +287,8 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             state = .connected(Connection(minPower: lo, maxPower: hi))
         }
     }
+
+    // MARK: Connected Operation
 
     @MainActor
     func setPower(_ newPower: Int) {
@@ -400,28 +350,6 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         }
     }
     
-    func disconnect(errorMessage: String? = nil) {
-        DispatchQueue.main.async { [self] in
-            switch self.state {
-            case .disconnected, .connecting, .connected:
-                break
-            case .scanning(_, let task):
-                task.cancel()
-            case .setup(let task):
-                task.cancel()
-            }
-            state = .disconnected
-            powerSendWorkItem?.cancel()
-            powerSendWorkItem = nil
-            commander.disconnect()
-            self.currentScanEPCs = []
-            if let errorMessage {
-                log.error("\(errorMessage, privacy: .public)")
-                self.lastErrorMessage = errorMessage
-            }
-        }
-    }
-
     @MainActor
     func clearTags() {
         self.tags.removeAll()
@@ -471,4 +399,89 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
             self.state = .connected(connection)
         }
     }
+
+    // MARK: Disconnect
+
+    func disconnect(errorMessage: String? = nil) {
+        DispatchQueue.main.async { [self] in
+            switch self.state {
+            case .disconnected, .connecting, .connected:
+                break
+            case .scanning(_, let task):
+                task.cancel()
+            case .setup(let task):
+                task.cancel()
+            }
+            state = .disconnected
+            powerSendWorkItem?.cancel()
+            powerSendWorkItem = nil
+            commander.disconnect()
+            self.currentScanEPCs = []
+            if let errorMessage {
+                log.error("\(errorMessage, privacy: .public)")
+                self.lastErrorMessage = errorMessage
+            }
+        }
+    }
+
+
+    // MARK: async helpers
+
+    @MainActor
+    private func runOrDisconnect(_ work: @escaping @MainActor () async throws -> Void) -> Task<Void, Never> {
+        return Task {
+            do {
+                try await work()
+            } catch {
+                disconnect(errorMessage: "\(error)")
+            }
+        }
+    }
+
+
+
+    // Run a synchronous reader command on scanQueue, throwing if the reader is
+    // not connected, the command fails, or this connection attempt has been
+    // superseded.
+    @MainActor
+    private func execute(_ cmd: TSLAsciiSelfResponderCommandBase, failure: String) async throws {
+        var waiting = true
+        let commander = self.commander
+        try await withTaskCancellationHandler(operation: {
+            try await withCheckedThrowingContinuation { (k: CheckedContinuation<Void, any Error>) in
+                scanQueue.async {
+                    if !commander.isConnected {
+                        k.resume(throwing: RFIDError(message: "reader disconnected"))
+                    }
+                    commander.execute(cmd)
+                    waiting = false
+                    k.resume()
+                }
+            }
+        }, onCancel: {
+            DispatchQueue.main.async {
+                if waiting {
+                    commander.abortSynchronousCommand()
+                }
+            }
+        })
+        try Task.checkCancellation()
+        guard cmd.isSuccessful else {
+            throw RFIDError(message: failure, code: cmd.errorCode)
+        }
+    }
+
+
+    private func withTimeout(_ duration: Duration, work: @escaping @MainActor () async throws -> Void) async throws {
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            group.addTask { try await work() }
+            group.addTask {
+                try await Task.sleep(for: duration)
+                throw RFIDError(message: "timeout reached")
+            }
+            try await group.next()
+            group.cancelAll()
+        }
+    }
+
 }
