@@ -343,6 +343,7 @@ final class RFIDReaderService: NSObject, ObservableObject, CBCentralManagerDeleg
         let epc = transponder.epc
         let rssi = transponder.rssi?.intValue
         DispatchQueue.main.async {
+            guard self.connection != nil else { return }
             if let epc {
                 self.currentScanEPCs.insert(epc)
                 if let index = self.tags.firstIndex(where: { $0.epc == epc }) {
